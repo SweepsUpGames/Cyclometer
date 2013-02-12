@@ -31,6 +31,11 @@ SevenSegmetController::SevenSegmetController() {
 
 	out8((ctrlHandle + DIGITAL_REG), INIT_CTRL_REG);
 
+	anode0 = new Anode( ANODE0, (int)0 );
+	anode1 = new Anode( ANODE1, .1 );
+	anode2 = new Anode( ANODE2, 2 );
+	anode3 = new Anode( ANODE3, 3 );
+
 }
 
 void SevenSegmetController::giveEvent(Event e){
@@ -39,18 +44,13 @@ void SevenSegmetController::giveEvent(Event e){
 
 void SevenSegmetController::runDisplay(){
 	while (true){
-		printf("Ran once\n");
-		out8((ctrlHandle + DIO_C), 0b01111111);
-		out8((ctrlHandle + DIO_A), LITE_POINT);
+		anode0->update();
 		usleep(5);
-		out8((ctrlHandle + DIO_C), 0b10111111);
-		out8((ctrlHandle + DIO_A), LITE_BLANK);
+		anode1->update();
 		usleep(5);
-		out8((ctrlHandle + DIO_C), 0b11011111);
-		out8((ctrlHandle + DIO_A), LITE_0);
+		anode2->update();
 		usleep(5);
-		out8((ctrlHandle + DIO_C), 0b11101111);
-		out8((ctrlHandle + DIO_A), LITE_6);
+		anode3->update();
 		usleep(5);
 	}
 }

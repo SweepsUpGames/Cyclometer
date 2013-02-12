@@ -8,10 +8,12 @@
 #ifndef EVENT_H_
 #define EVENT_H_
 
+class SevenSegmetController;
+
 class Event {
 public:
 	//TODO add State to run parameters
-	void run();
+	void run(SevenSegmetController ssc);
 };
 
 #endif /* EVENT_H_ */
