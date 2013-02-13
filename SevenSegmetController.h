@@ -24,9 +24,13 @@ private:
 	Anode* anode1;
 	Anode* anode2;
 	Anode* anode3;
+	int getFirstDiget(double number);
+	int getSecondDiget(double number);
 
 public:
 	SevenSegmetController();
+	void setDisplay(int number, bool leadingZeros );
+	void setDisplay(double current, double average);
 	void giveEvent(Event e);
 	void runDisplay();
 

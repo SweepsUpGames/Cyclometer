@@ -31,15 +31,88 @@ SevenSegmetController::SevenSegmetController() {
 
 	out8((ctrlHandle + DIGITAL_REG), INIT_CTRL_REG);
 
-	anode0 = new Anode( ANODE0, (int)0 );
-	anode1 = new Anode( ANODE1, .1 );
-	anode2 = new Anode( ANODE2, 2 );
-	anode3 = new Anode( ANODE3, 3 );
+	anode0 = new Anode(ANODE0, LITE_0, false);
+	anode1 = new Anode(ANODE1, LITE_0, false);
+	anode2 = new Anode(ANODE2, LITE_0, false);
+	anode3 = new Anode(ANODE3, LITE_0, false);
 
 }
 
-void SevenSegmetController::giveEvent(Event e){
+void SevenSegmetController::giveEvent(Event event){
 
+}
+
+void SevenSegmetController::setDisplay(double current, double average){
+
+	bool decimalFirst = false;
+	bool decimalSecond = false;
+	if (current < 10){
+		decimalFirst = true;
+	}
+	if (average < 10){
+		decimalSecond = true;
+	}
+
+	anode3->setVal(getFirstDiget(current), decimalFirst );
+	anode2->setVal(getSecondDiget(current), false );
+	anode1->setVal(getFirstDiget(average), decimalSecond );
+	anode0->setVal(getSecondDiget(average), false );
+}
+
+void SevenSegmetController::setDisplay(int number, bool leadingZeros ){
+	if(number >= 1000){
+		anode3->setVal(number/1000);
+	} else if ( leadingZeros ) {
+		anode3->setVal(0);
+	} else {
+		anode3->setVal(-1);
+	}
+	if(number >= 100){
+		anode2->setVal((number/100)%10);
+	} else if ( leadingZeros ) {
+		anode2->setVal(0);
+	} else {
+		anode2->setVal(-1);
+	}
+	if(number >= 10){
+		anode1->setVal((number/10)%10);
+	} else if ( leadingZeros ) {
+		anode1->setVal(0);
+	} else {
+		anode1->setVal(-1);
+	}
+	if(number >= 1){
+		anode0->setVal((number)%10);
+	} else if ( leadingZeros ) {
+		anode0->setVal(0);
+	} else {
+		anode0->setVal(-1);
+	}
+}
+
+int SevenSegmetController::getFirstDiget(double number){
+	int ret = 0;
+	if(number < 10)	{
+		ret = (int)number;
+	}
+	else {
+		ret = (int)number/10;
+	}
+	return ret;
+}
+
+int SevenSegmetController::getSecondDiget(double number){
+	int ret = 0;
+	if(number < 10)	{
+		while ( number > 1.0 ){
+			number = number-1.0;
+		}
+		ret = (int)(number*10);
+	}
+	else {
+		ret = (int)number%10;
+	}
+	return ret;
 }
 
 void SevenSegmetController::runDisplay(){

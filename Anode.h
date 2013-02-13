@@ -13,13 +13,14 @@
 
 class Anode{
 private:
-	uintptr_t port;
+	uint8_t port;
 	uint8_t val;
 public:
-	Anode( uintptr_t port, double val );
+	Anode( uint8_t port, int val, bool decimal );
 	void update();
-	void setVal( double val );
-	void setPort( uintptr_t port );
+	void setVal( int val );
+	void setVal( int val, bool decimal );
+	void setPort( uint8_t port );
 };
 
 #endif /* ANODE_H_ */
