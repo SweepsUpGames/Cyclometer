@@ -15,14 +15,20 @@
 #define CTRL_ADDRESS 0x280
 
 // Initialization value for the control register
-#define INIT_CTRL_REG 0x83 //1XX00X11 // 131
+#define INIT_CTRL_REG 0b00000010
 
-// Address of the digitial register
+// Initializes value for the counter control register
+#define INIT_COUNT_CTRL_REG 0b00000010
+#define ENABLE_GATE0 0b00010000
+#define ENABLE_COUNT 0b00000100
+
+// Address of the digital register
 #define DIGITAL_REG 0x0B
 
 // offset from the base address for:
 #define DIO_A CTRL_ADDRESS + 0x08 // DIO_A
 #define DIO_B CTRL_ADDRESS + 0x09 // DIO_B
 #define DIO_C CTRL_ADDRESS + 0x0A // DIO_C
+#define GATE_CTRL CTRL_ADDRESS + 0x0F //gate control register
 
 #endif /* CONSTANTS_H_ */
