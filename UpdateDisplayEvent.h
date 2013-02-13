@@ -8,11 +8,12 @@
 #ifndef UPDATEDISPLAYEVENT_H_
 #define UPDATEDISPLAYEVENT_H_
 
-#include "Event.h";
+#include "Event.h"
 
 class UpdateDisplayEvent: public Event{
 public:
-	void run(SevenSegmetController ssc);
+	UpdateDisplayEvent(double current, double average);
+	void run(SevenSegmetController* ssc);
 private:
 	double current;
 	double average;

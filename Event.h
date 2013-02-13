@@ -13,7 +13,7 @@ class SevenSegmetController;
 class Event {
 public:
 	//TODO add State to run parameters
-	void run(SevenSegmetController ssc);
+	virtual void run(SevenSegmetController* ssc);
 };
 
 #endif /* EVENT_H_ */

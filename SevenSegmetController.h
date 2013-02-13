@@ -12,11 +12,12 @@
 #include "Display.h"
 #include "Constants.h"
 #include "Event.h"
+#include "CyclometerReceiver.h"
 
 #include <pthread.h>
 #include <stdint.h>
 
-class SevenSegmetController {
+class SevenSegmetController: public CyclometerReceiver {
 private:
 	pthread_mutex_t sevenSegmetMutex;
 	uintptr_t ctrlHandle;
@@ -33,7 +34,7 @@ public:
 	void setDisplay(double current, double average);
 	void giveEvent(Event e);
 	void runDisplay();
-
+	void handleEvent ( Event event );
 };
 
 #endif /* SEVENSEGMETCONTROLLER_H_ */

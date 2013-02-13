@@ -38,11 +38,13 @@ SevenSegmetController::SevenSegmetController() {
 
 }
 
-void SevenSegmetController::giveEvent(Event event){
-
+void SevenSegmetController::handleEvent ( Event event ){
+	event.run(this);
 }
 
 void SevenSegmetController::setDisplay(double current, double average){
+	printf("Mutex error: %d\n", current);
+	printf("Mutex error: %d\n", average);
 
 	bool decimalFirst = false;
 	bool decimalSecond = false;
