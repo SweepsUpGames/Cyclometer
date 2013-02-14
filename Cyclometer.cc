@@ -2,21 +2,39 @@
 #include "UpdateDisplayEvent.h"
 #include <cstdlib>
 #include <iostream>
+#include <unistd.h>
 
-
+using namespace std;
 
 int main(int argc, char *argv[]) {
 	//std::cout << "Welcome to the QNX Momentics IDE" << std::endl;
 
-	SevenSegmetController ssc = SevenSegmetController();
-	UpdateDisplayEvent disp = UpdateDisplayEvent(1.2,3.4);
+	SevenSegmetController* ssc = new SevenSegmetController();
+	ssc->startDisplay();
 
-	ssc.handleEvent(disp);
+	UpdateDisplayEvent* disp = new UpdateDisplayEvent();
 
-	//ssc.setDisplay(1.2,3.4);
+	double count = 0.0;
+
+	while(true){
+
+
+		disp->setCurrent(count);
+		disp->setAverage(3.4);
+
+		ssc->handleEvent(disp);
+
+		count = count + 0.1;
+
+		if (count > 10 ){
+			count = 0.0;
+		}
+
+		usleep(1000000);
+	}
+
 
 	//ssc.setDisplay(948,false);
-	ssc.runDisplay();
 
 	//TODO SSC run on own thread
 	//TODO add connection from generator to gate0 pin to enable counter

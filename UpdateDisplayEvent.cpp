@@ -8,9 +8,12 @@
 #include "UpdateDisplayEvent.h"
 #include "SevenSegmetController.h"
 
-UpdateDisplayEvent::UpdateDisplayEvent(double startCurrent, double startAverage){
-	current = startCurrent;
-	average = startAverage;
+void UpdateDisplayEvent::setCurrent(double newCurrent){
+	current = newCurrent;
+}
+
+void UpdateDisplayEvent::setAverage(double newAverage){
+	average = newAverage;
 }
 
 void UpdateDisplayEvent::run(SevenSegmetController* ssc){

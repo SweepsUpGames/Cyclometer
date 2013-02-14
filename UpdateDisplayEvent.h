@@ -12,8 +12,9 @@
 
 class UpdateDisplayEvent: public Event{
 public:
-	UpdateDisplayEvent(double current, double average);
 	void run(SevenSegmetController* ssc);
+	void setCurrent(double newCurrent);
+	void setAverage(double newAverage);
 private:
 	double current;
 	double average;

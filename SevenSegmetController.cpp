@@ -11,6 +11,8 @@
 #include <hw/inout.h>
 #include <sys/mman.h>
 #include <sys/neutrino.h>
+#include <pthread.h>
+
 
 using namespace std;
 
@@ -31,20 +33,19 @@ SevenSegmetController::SevenSegmetController() {
 
 	out8((ctrlHandle + DIGITAL_REG), INIT_CTRL_REG);
 
-	anode0 = new Anode(ANODE0, LITE_0, false);
-	anode1 = new Anode(ANODE1, LITE_0, false);
-	anode2 = new Anode(ANODE2, LITE_0, false);
-	anode3 = new Anode(ANODE3, LITE_0, false);
+	anode0 = new Anode(ANODE0, LITE_1, false);
+	anode1 = new Anode(ANODE1, LITE_1, false);
+	anode2 = new Anode(ANODE2, LITE_1, false);
+	anode3 = new Anode(ANODE3, LITE_1, false);
+	running = true;
 
 }
 
-void SevenSegmetController::handleEvent ( Event event ){
-	event.run(this);
+void SevenSegmetController::handleEvent ( Event* event ){
+	sscQueue.push_back(event);
 }
 
 void SevenSegmetController::setDisplay(double current, double average){
-	printf("Mutex error: %d\n", current);
-	printf("Mutex error: %d\n", average);
 
 	bool decimalFirst = false;
 	bool decimalSecond = false;
@@ -117,15 +118,33 @@ int SevenSegmetController::getSecondDiget(double number){
 	return ret;
 }
 
-void SevenSegmetController::runDisplay(){
-	while (true){
-		anode0->update();
-		usleep(5);
-		anode1->update();
-		usleep(5);
-		anode2->update();
-		usleep(5);
-		anode3->update();
-		usleep(5);
+void SevenSegmetController::updateDisplay(){
+	if (!sscQueue.empty()){
+		sscQueue.front()->run(this);
+		sscQueue.pop_front();
 	}
+	anode0->update();
+	usleep(5);
+	anode1->update();
+	usleep(5);
+	anode2->update();
+	usleep(5);
+	anode3->update();
+	usleep(5);
+}
+
+bool SevenSegmetController::isRunning(){
+	return running;
+}
+
+void* runDisplay(void* ssc){
+	while (((SevenSegmetController *) ssc)->isRunning()){
+		((SevenSegmetController *) ssc)->updateDisplay();
+	}
+	return NULL;
+}
+
+void SevenSegmetController::startDisplay(){
+	pthread_t ssc_t;
+	pthread_create(&ssc_t, NULL, runDisplay, this);
 }

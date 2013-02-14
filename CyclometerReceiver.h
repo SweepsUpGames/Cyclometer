@@ -8,8 +8,9 @@
 #ifndef CYCLOMETERRECEIVER_H_
 #define CYCLOMETERRECEIVER_H_
 
-#include <list>
 #include "Event.h"
+#include <list>
+
 
 class CyclometerReceiver{
 private:
