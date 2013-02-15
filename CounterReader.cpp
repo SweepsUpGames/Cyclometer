@@ -30,6 +30,10 @@ CounterReader::CounterReader(){
 			printf("Mutex error: %d\n", result);
 		}
 
+		out8(LOW, 0x00);
+		out8(MED, 0x00);
+		out8(HIGH, 0x00);
+
 		out8(GATE_CTRL, INIT_COUNT_CTRL_REG);
 		out8(GATE_CTRL, ENABLE_GATE0);
 		out8(GATE_CTRL, ENABLE_COUNT);
@@ -44,7 +48,9 @@ uint8_t CounterReader::checkCounter(){
 	//TODO reset counter
 	out8(GATE_CTRL, LATCH_ON);
 	uint8_t read = 0x00;
-	read = in8(LSB);
+	read = in8(LOW);
+	out8(GATE_CTRL, CLEAR);
+	//out8(GATE_CTRL, LATCH_ON);
 
 	return read;
 }

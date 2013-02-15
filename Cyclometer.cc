@@ -1,5 +1,5 @@
 #include "SevenSegmetController.h"
-#include "CounterReader.h"
+#include "ButtonReader.h"
 #include "UpdateDisplayEvent.h"
 #include <cstdlib>
 #include <iostream>
@@ -13,7 +13,9 @@ int main(int argc, char *argv[]) {
 	SevenSegmetController* ssc = new SevenSegmetController();
 	ssc->startDisplay();
 
-	CounterReader* cr = new CounterReader();
+	ButtonReader* br = new ButtonReader();
+	br->readInput();
+	//CounterReader* cr = new CounterReader();
 
 	UpdateDisplayEvent* disp = new UpdateDisplayEvent();
 
@@ -27,7 +29,7 @@ int main(int argc, char *argv[]) {
 		if (count > 10 ){
 			count = 0.0;
 		}
-		printf("value %i\n",cr->checkCounter());
+		//printf("value %i\n",cr->checkCounter());
 		usleep(1000000);
 	}
 
