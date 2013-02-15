@@ -13,7 +13,6 @@
 #include <sys/neutrino.h>
 #include <pthread.h>
 
-
 using namespace std;
 
 SevenSegmetController::SevenSegmetController() {

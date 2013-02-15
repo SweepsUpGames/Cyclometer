@@ -21,6 +21,8 @@
 #define INIT_COUNT_CTRL_REG 0b00000010
 #define ENABLE_GATE0 0b00010000
 #define ENABLE_COUNT 0b00000100
+#define LATCH_ON 0b01000000
+#define LATCH_OFF 0b00000000
 
 // Address of the digital register
 #define DIGITAL_REG 0x0B
@@ -30,5 +32,6 @@
 #define DIO_B CTRL_ADDRESS + 0x09 // DIO_B
 #define DIO_C CTRL_ADDRESS + 0x0A // DIO_C
 #define GATE_CTRL CTRL_ADDRESS + 0x0F //gate control register
+#define LSB CTRL_ADDRESS + 0x0C //least significant byte
 
 #endif /* CONSTANTS_H_ */
