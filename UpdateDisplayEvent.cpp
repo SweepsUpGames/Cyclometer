@@ -7,6 +7,11 @@
 
 #include "UpdateDisplayEvent.h"
 #include "SevenSegmetController.h"
+#include "EventType.h"
+
+UpdateDisplayEvent::UpdateDisplayEvent(){
+    this.EVENT_TYPE = ev::DISPLAY;
+}
 
 void UpdateDisplayEvent::setCurrent(double newCurrent){
 	current = newCurrent;

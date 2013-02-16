@@ -9,8 +9,11 @@
 #define GENERATOR_H_
 
 class Generator{
+public:
+	virtual void trigger(Event event);
+
 private:
-	//Dispatcher dispatch
+	Dispatcher dispatch;
 };
 
 #endif /* GENERATOR_H_ */

@@ -8,6 +8,8 @@
 #ifndef EVENT_H_
 #define EVENT_H_
 
+#include "EventType.h"
+
 class SevenSegmetController;
 
 class Event {
@@ -16,6 +18,11 @@ public:
 	Event();
 	virtual ~Event();
 	virtual void run(SevenSegmetController* ssc);
+	ev::EventType getEventType() {
+		return EVENT_TYPE;
+	}
+private:
+	ev::EventType EVENT_TYPE;
 };
 
 #endif /* EVENT_H_ */
