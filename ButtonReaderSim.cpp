@@ -2,10 +2,33 @@
  * ButtonReader.cpp
  *
  *  Created on: Feb 15, 2013
+ *
  *      Author: ajm6611
  */
 
-void ButtonReader::trigger(Event ev) {
+#include "ButtonReaderSim.h"
+#include "Constants.h"
+
+#include <iostream>
+#include <hw/inout.h>
+#include <sys/mman.h>
+#include <sys/neutrino.h>
+#include <pthread.h>
+#include <unistd.h>
+
+using namespace std;
+
+ButtonReaderSim::ButtonReaderSim(){
+
+}
+
+ButtonReaderSim::~ButtonReaderSim(){
+
+}
+
+
+
+void ButtonReaderSim::trigger(Event ev) {
 	dispatcher.dispatch(ev);
 }
 
@@ -41,7 +64,7 @@ void* scanButton(void* ssc) {
 	return NULL;
 }
 
-void ButtonReader::start() {
+void ButtonReaderSim::start() {
 	pthread_t reader;
 	pthread_create(&reader, NULL, scanButton, this);
 }

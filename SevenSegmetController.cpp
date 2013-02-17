@@ -11,7 +11,6 @@
 #include <hw/inout.h>
 #include <sys/mman.h>
 #include <sys/neutrino.h>
-#include <pthread.h>
 
 using namespace std;
 
