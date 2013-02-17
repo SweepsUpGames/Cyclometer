@@ -16,20 +16,23 @@
 #include <list>
 
 
-class ButtonReader: public Generator{
+class ButtonReaderSim: public Generator{
 private:
 	uintptr_t ctrlHandle;
 	uintptr_t curValues;
 	std::list<uintptr_t>* values;
+	//Dispatcher dispatcher;
 
 
 public :
-	ButtonReader();
-	~ButtonReader();
+	ButtonReaderSim();
+	~ButtonReaderSim();
 	void readInput();
 	uintptr_t readButtons();
+	void readButton();
 	std::list<uintptr_t>* getCurrentValues();
 	void start();
+	void trigger(Event ev);
 
 };
 

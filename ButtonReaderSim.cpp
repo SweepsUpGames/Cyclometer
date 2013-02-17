@@ -8,6 +8,9 @@
 
 #include "ButtonReaderSim.h"
 #include "Constants.h"
+#include "ModeEvent.h"
+#include "SetEvent.h"
+#include "StartStopEvent.h"
 
 #include <iostream>
 #include <hw/inout.h>
@@ -26,32 +29,34 @@ ButtonReaderSim::~ButtonReaderSim(){
 
 }
 
-
-
 void ButtonReaderSim::trigger(Event ev) {
 	dispatcher.dispatch(ev);
 }
 
-void* scanButton(void* ssc) {
-	/*while (((SevenSegmetController *) ssc)->isRunning()){
-	 ((SevenSegmetController *) ssc)->updateDisplay();
-	 }*/
+void* scanButton(void* brs) {
+	ButtonReaderSim* buttonReaderSim = (ButtonReaderSim*) brs;
+	for (;;){
+		buttonReaderSim->readButton();
+	}
+	return NULL;
+}
 
-	char c;
+void ButtonReaderSim::readButton(){
+	char c = 0;
 	while (std::cin.get(c)) {
 		std::cout.put(c);
 
 		switch (c) {
 		case 'm':
-			trigger(new ModeEvent());
+			trigger(ModeEvent());
 			std::cout<<"mode event triggered...";
 			break;
 		case 's':
-			trigger(new SetEvent());
+			trigger(SetEvent());
 			std::cout<<"set event triggered...";
 			break;
 		case 'S':
-			trigger(new StartStopEvent());
+			trigger(StartStopEvent());
 			std::cout<<"start-stop event triggered...";
 			break;
 		case 'x':
@@ -60,8 +65,6 @@ void* scanButton(void* ssc) {
 
 		usleep(10);
 	}
-
-	return NULL;
 }
 
 void ButtonReaderSim::start() {

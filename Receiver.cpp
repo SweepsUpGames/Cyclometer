@@ -8,8 +8,10 @@
 
 using namespace std;
 
-Receiver::Receiver(Dispatcher disp){
-	this.dispatcher = disp;
-    dispatcher.subscribe(, this);
+Receiver::Receiver(){
+
 }
 
+void Receiver::notify(Event ev){
+
+}

@@ -8,19 +8,31 @@
 #ifndef DISPATCHER_H_
 #define DISPATCHER_H_
 
+#include "Event.h"
+#include "Receiver.h"
+#include "EventType.h"
+#include <list>
+#include <map>
+
+
+//class Receiver;
+
 class Dispatcher {
 public:
 	//TODO add State to run parameters
 	Dispatcher();
 	~Dispatcher();
-	void dispatch(Event* event);
+	void dispatch(Event event);
 	void subscribe(ev::EventType evType, Receiver receiver);
 	void start();
 	void stop();
+	bool isRunning();
+	void runDispatch();
+
 private:
 	std::map<ev::EventType, Receiver> eventReceiversHashtable;
-	std::list<Event*> eventQueue;
-	bool isRunning;
+	std::list<Event> eventQueue;
+	bool running;
 };
 
 #endif /* DISPATCHER_H_ */

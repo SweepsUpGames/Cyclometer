@@ -12,6 +12,7 @@
 
 class UpdateDisplayEvent: public Event{
 public:
+	UpdateDisplayEvent();
 	void run(SevenSegmetController* ssc);
 	void setCurrent(double newCurrent);
 	void setAverage(double newAverage);

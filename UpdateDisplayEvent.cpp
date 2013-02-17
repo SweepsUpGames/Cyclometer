@@ -10,7 +10,7 @@
 #include "EventType.h"
 
 UpdateDisplayEvent::UpdateDisplayEvent(){
-    this.EVENT_TYPE = ev::DISPLAY;
+    EVENT_TYPE = ev::DISPLAY;
 }
 
 void UpdateDisplayEvent::setCurrent(double newCurrent){

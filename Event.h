@@ -21,7 +21,8 @@ public:
 	ev::EventType getEventType() {
 		return EVENT_TYPE;
 	}
-private:
+
+protected:
 	ev::EventType EVENT_TYPE;
 };
 

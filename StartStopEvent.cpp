@@ -5,10 +5,10 @@
  *      Author: ajm6611
  */
 
-class StartStopEvent : public Event{
+#include "StartStopEvent.h"
 
-	StartStopEvent::StartStopEvent(){
-	    EVENT_TYPE = ev::STARTSTOP;
-	}
 
-};
+StartStopEvent::StartStopEvent(){
+	EVENT_TYPE = ev::STARTSTOP;
+}
+

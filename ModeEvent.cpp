@@ -5,10 +5,9 @@
  *      Author: ajm6611
  */
 
-class ModeEvent : public Event{
+#include "ModeEvent.h"
 
-	ModeEvent::ModeEvent(){
-	    this.EVENT_TYPE = ev::MODE;
-	}
+ModeEvent::ModeEvent(){
+	EVENT_TYPE = ev::MODE;
+}
 
-};

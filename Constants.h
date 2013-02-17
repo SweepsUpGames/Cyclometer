@@ -24,11 +24,13 @@
 #define LATCH_ON     		0b01000000
 #define CLEAR        		0b00000001
 #define LATCH_OFF    		0b00000000
+#define EXTERNALCLOCK 		0b10000000
 
 // Address of the digital register
 #define DIGITAL_REG 0x0B
 
 // offset from the base address for:
+#define BASE4 CTRL_ADDRESS + 0x04
 #define DIO_A CTRL_ADDRESS + 0x08 // DIO_A
 #define DIO_B CTRL_ADDRESS + 0x09 // DIO_B
 #define DIO_C CTRL_ADDRESS + 0x0A // DIO_C

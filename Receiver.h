@@ -8,15 +8,20 @@
 #ifndef RECEIVER_H_
 #define RECEIVER_H_
 
+#include "Event.h"
+#include <list>
 
+using namespace std;
+
+class Dispatcher;
 class Receiver{
 public:
-	Receiver(Dispatcher *dispatcher);
+	Receiver();
 	void notify(Event ev);
-
+	void setDispather(Dispatcher *dispatcher);
 
 private:
 	std::list<Event> eventList;
-	Dispatcher dispatcher;
+	Dispatcher* dispatcher;
 };
 #endif /* RECEIVER_H_ */

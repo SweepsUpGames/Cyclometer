@@ -8,11 +8,14 @@
 #ifndef GENERATOR_H_
 #define GENERATOR_H_
 
+#include "Event.h"
+#include "Dispatcher.h"
+
 class Generator{
 public:
 	virtual void trigger(Event event);
 
-private:
+protected:
 	Dispatcher dispatch;
 };
 
