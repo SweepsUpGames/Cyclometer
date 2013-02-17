@@ -27,6 +27,10 @@ local.properties
 # PDT-specific
 .buildpath
 
+#################
+## C++
+#################
+x86/
 
 #################
 ## Visual Studio
