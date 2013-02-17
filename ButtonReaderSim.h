@@ -21,7 +21,6 @@ private:
 	uintptr_t ctrlHandle;
 	uintptr_t curValues;
 	std::list<uintptr_t>* values;
-	//Dispatcher dispatcher;
 
 
 public :

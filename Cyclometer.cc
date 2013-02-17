@@ -1,6 +1,7 @@
 #include "SevenSegmetController.h"
-#include "ButtonReader.h"
+#include "CounterReader.h"
 #include "UpdateDisplayEvent.h"
+#include "Dispatcher.h"
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
@@ -13,18 +14,22 @@ int main(int argc, char *argv[]) {
 	SevenSegmetController* ssc = new SevenSegmetController();
 	ssc->startDisplay();
 
-	ButtonReader* br = new ButtonReader();
-	br->readInput();
-	//CounterReader* cr = new CounterReader();
+	Dispatcher dispatch = Dispatcher();
+	ssc->setDispather(&dispatch);
 
-	UpdateDisplayEvent* disp = new UpdateDisplayEvent();
+	//ButtonReader* br = new ButtonReader();
+	//br->readInput();
+	CounterReader* cr = new CounterReader();
+	cr->setDispatcher(dispatch);
+
+	UpdateDisplayEvent disp = UpdateDisplayEvent();
 
 	double count = 0.0;
 
 	while(true){
-		disp->setCurrent(count);
-		disp->setAverage(3.4);
-		ssc->handleEvent(disp);
+		//disp.setCurrent(count);
+		//disp.setAverage(3.4);
+		//ssc->notify(disp);
 		count = count + 0.1;
 		if (count > 10 ){
 			count = 0.0;

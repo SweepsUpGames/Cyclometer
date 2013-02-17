@@ -39,12 +39,16 @@ SevenSegmetController::SevenSegmetController() {
 
 }
 
-void SevenSegmetController::handleEvent ( Event* event ){
-	sscQueue.push_back(event);
+void SevenSegmetController::notify ( Event event ){
+	sscQueue.push_back(&event);
+}
+
+void SevenSegmetController::setDispather(Dispatcher *dispatch){
+	dispatcher = dispatch;
+	dispatcher->subscribe(ev::DISPLAY, *this);
 }
 
 void SevenSegmetController::setDisplay(double current, double average){
-
 	bool decimalFirst = false;
 	bool decimalSecond = false;
 	if (current < 10){

@@ -30,7 +30,7 @@ ButtonReaderSim::~ButtonReaderSim(){
 }
 
 void ButtonReaderSim::trigger(Event ev) {
-	dispatcher.dispatch(ev);
+	dispatch.dispatch(ev);
 }
 
 void* scanButton(void* brs) {

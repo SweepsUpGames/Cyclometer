@@ -7,6 +7,7 @@
 
 #include "CounterReader.h"
 #include "Constants.h"
+#include "UpdateDisplayEvent.h"
 
 #include <iostream>
 #include <hw/inout.h>
@@ -45,11 +46,22 @@ CounterReader::~CounterReader(){
 	//delete(this);
 }
 
+void CounterReader::trigger(Event event){
+	dispatch.dispatch(event);
+}
+
 uint8_t CounterReader::checkCounter(){
 	out8(GATE_CTRL, LATCH_ON);
 	usleep(50);
 	int read = 0x00;
 	read = in8(LOW);
+	UpdateDisplayEvent ude = UpdateDisplayEvent();
+	ude.setAverage(255-read);
+	ude.setCurrent(255-read);
+	trigger(ude);
 	return read;
 }
 
+void CounterReader::setDispatcher(Dispatcher dispatcher){
+	dispatch = dispatcher;
+}

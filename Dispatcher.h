@@ -9,13 +9,13 @@
 #define DISPATCHER_H_
 
 #include "Event.h"
-#include "Receiver.h"
+//#include "Receiver.h"
 #include "EventType.h"
 #include <list>
 #include <map>
 
 
-//class Receiver;
+class Receiver;
 
 class Dispatcher {
 public:

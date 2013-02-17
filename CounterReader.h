@@ -8,10 +8,12 @@
 #ifndef COUNTERREADER_H_
 #define COUNTERREADER_H_
 
+#include "Generator.h"
+
 #include <pthread.h>
 #include <stdint.h>
 
-class CounterReader{
+class CounterReader:public Generator{
 private:
 	pthread_mutex_t counterReaderMutex;
 	uintptr_t ctrlHandle;
@@ -20,6 +22,8 @@ public:
 	CounterReader();
 	~CounterReader();
 	uint8_t checkCounter();
+	void setDispatcher(Dispatcher dispatcher);
+	void trigger(Event event);
 };
 
 #endif /* COUNTERREADER_H_ */

@@ -8,7 +8,7 @@
 #ifndef SEVENSEGMETCONTROLLER_H_
 #define SEVENSEGMETCONTROLLER_H_
 
-#include "CyclometerReceiver.h"
+#include "Receiver.h"
 #include "Anode.h"
 #include "Display.h"
 #include "Constants.h"
@@ -18,7 +18,7 @@
 #include <list>
 
 
-class SevenSegmetController: public CyclometerReceiver {
+class SevenSegmetController: public Receiver {
 private:
 	pthread_mutex_t sevenSegmetMutex;
 	uintptr_t ctrlHandle;
@@ -33,9 +33,10 @@ private:
 
 public:
 	SevenSegmetController();
+	void setDispather(Dispatcher *dispatcher);
 	void setDisplay(int number, bool leadingZeros );
 	void setDisplay(double current, double average);
-	void handleEvent ( Event* event );
+	void notify(Event ev);
 	bool isRunning();
 	void updateDisplay();
 	void startDisplay();
