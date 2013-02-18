@@ -14,7 +14,7 @@
 
 using namespace std;
 
-//class Dispatcher;
+class Dispatcher;
 class Receiver{
 public:
 	Receiver();

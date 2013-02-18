@@ -50,7 +50,7 @@ void CounterReader::trigger(Event event){
 	dispatch.dispatch(event);
 }
 
-uint8_t CounterReader::checkCounter(){
+void CounterReader::checkCounter(){
 	out8(GATE_CTRL, LATCH_ON);
 	usleep(50);
 	int read = 0x00;
@@ -59,9 +59,22 @@ uint8_t CounterReader::checkCounter(){
 	ude.setAverage(255-read);
 	ude.setCurrent(255-read);
 	trigger(ude);
-	return read;
+	usleep(1000000);
 }
 
 void CounterReader::setDispatcher(Dispatcher dispatcher){
 	dispatch = dispatcher;
+}
+
+void* runCounter(void* cr){
+	CounterReader* counter = (CounterReader*)cr;
+	for(;;){
+		counter->checkCounter();
+	}
+	return NULL;
+}
+
+void CounterReader::startCounter(){
+	pthread_t cr_t;
+	pthread_create(&cr_t, NULL, runCounter, this);
 }

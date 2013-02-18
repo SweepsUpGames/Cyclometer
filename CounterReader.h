@@ -21,9 +21,10 @@ private:
 public:
 	CounterReader();
 	~CounterReader();
-	uint8_t checkCounter();
+	void checkCounter();
 	void setDispatcher(Dispatcher dispatcher);
 	void trigger(Event event);
+	void startCounter();
 };
 
 #endif /* COUNTERREADER_H_ */

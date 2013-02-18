@@ -12,15 +12,18 @@ int main(int argc, char *argv[]) {
 	std::cout << "Welcome to the QNX Momentics IDE" << std::endl;
 
 	SevenSegmetController* ssc = new SevenSegmetController();
-	ssc->startDisplay();
+	CounterReader* cr = new CounterReader();
+	Dispatcher* dispatch = new Dispatcher();
+	dispatch->start();
 
-	Dispatcher dispatch = Dispatcher();
-	ssc->setDispather(&dispatch);
+	ssc->startDisplay();
+	ssc->setDispather(dispatch);
 
 	//ButtonReader* br = new ButtonReader();
 	//br->readInput();
-	CounterReader* cr = new CounterReader();
-	cr->setDispatcher(dispatch);
+	cr->startCounter();
+	cr->setDispatcher(*dispatch);
+
 
 	UpdateDisplayEvent disp = UpdateDisplayEvent();
 

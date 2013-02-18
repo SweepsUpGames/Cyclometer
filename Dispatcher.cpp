@@ -9,12 +9,12 @@
 #include <pthread.h>
 #include <unistd.h>
 
-
 Dispatcher::Dispatcher() {
 
 }
 
 void Dispatcher::dispatch(Event event) {
+	printf("received event\n");
 	eventQueue.push_back(event);
 }
 
@@ -30,12 +30,15 @@ void* eventWorker(void* disp) {
 	Dispatcher* dispatcher = (Dispatcher*)disp;
 	while (dispatcher->isRunning()) {
 		dispatcher->runDispatch();
+		usleep(10);
 	}
 	return NULL;
 }
 
 void Dispatcher::runDispatch(){
-	while (!eventQueue.empty()) {
+	//printf("dispatch is running\n");
+	if (!eventQueue.empty()) {
+		printf("seen event\n");
 		Event ev = eventQueue.front();
 		eventQueue.pop_front();
 		std::map<ev::EventType, Receiver>::iterator it;
@@ -45,14 +48,12 @@ void Dispatcher::runDispatch(){
 			}
 		}
 	}
-
-	usleep(10);
 }
 
 void Dispatcher::start() {
 	pthread_t disp_t;
-	pthread_create(&disp_t, NULL, eventWorker, this);
 	running = true;
+	pthread_create(&disp_t, NULL, eventWorker, this);
 }
 
 void Dispatcher::stop() {
