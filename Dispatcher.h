@@ -23,7 +23,7 @@ public:
 	Dispatcher();
 	~Dispatcher();
 	void dispatch(Event event);
-	void subscribe(ev::EventType evType, Receiver receiver);
+	void subscribe(ev::EventType evType, Receiver* receiver);
 	void start();
 	void stop();
 	bool isRunning();
@@ -33,7 +33,7 @@ protected:
 	std::list<Event> eventQueue;
 
 private:
-	std::map<ev::EventType, Receiver> eventReceiversHashtable;
+	std::map<ev::EventType, Receiver*> eventReceiversHashtable;
 	bool running;
 
 };

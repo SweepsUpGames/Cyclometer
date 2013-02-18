@@ -12,8 +12,9 @@ namespace ev
 {
     enum EventType
     {
-        DISPLAY,
+
         SET,
+        DISPLAY,
         MODE,
         STARTSTOP
     };

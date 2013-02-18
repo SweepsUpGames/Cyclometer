@@ -40,12 +40,13 @@ SevenSegmetController::SevenSegmetController() {
 }
 
 void SevenSegmetController::notify ( Event event ){
+	printf("notify\n");
 	sscQueue.push_back(&event);
 }
 
 void SevenSegmetController::setDispather(Dispatcher *dispatch){
 	dispatcher = dispatch;
-	dispatcher->subscribe(ev::DISPLAY, *this);
+	dispatcher->subscribe(ev::DISPLAY, this);
 }
 
 void SevenSegmetController::setDisplay(double current, double average){

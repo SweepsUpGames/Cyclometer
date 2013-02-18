@@ -18,7 +18,7 @@ class Dispatcher;
 class Receiver{
 public:
 	Receiver();
-	void notify(Event ev);
+	virtual void notify(Event ev);
 	void setDispather(Dispatcher *dispatcher);
 
 protected:
