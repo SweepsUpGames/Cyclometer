@@ -7,7 +7,7 @@
 
 #include "CounterReader.h"
 #include "Constants.h"
-#include "UpdateDisplayEvent.h"
+#include "UpdateDisplayNumberEvent.h"
 
 #include <iostream>
 #include <hw/inout.h>
@@ -55,9 +55,9 @@ void CounterReader::checkCounter(){
 	usleep(50);
 	int read = 0x00;
 	read = in8(LOW);
-	UpdateDisplayEvent* ude = new UpdateDisplayEvent();
-	ude->setAverage(255-read);
-	ude->setCurrent(255-read);
+	UpdateDisplayNumberEvent* ude = new UpdateDisplayNumberEvent();
+	ude->setNumber(read);
+	ude->setLeadingZeros(false);
 	trigger(ude);
 	usleep(1000000);
 }

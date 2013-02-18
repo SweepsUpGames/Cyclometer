@@ -14,7 +14,7 @@
 #include <list>
 #include <map>
 
-
+class Event;
 class Receiver;
 
 class Dispatcher {
