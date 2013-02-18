@@ -29,10 +29,13 @@ public:
 	bool isRunning();
 	void runDispatch();
 
+protected:
+	std::list<Event> eventQueue;
+
 private:
 	std::map<ev::EventType, Receiver> eventReceiversHashtable;
-	std::list<Event> eventQueue;
 	bool running;
+
 };
 
 #endif /* DISPATCHER_H_ */
