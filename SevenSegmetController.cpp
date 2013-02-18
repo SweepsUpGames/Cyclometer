@@ -39,9 +39,9 @@ SevenSegmetController::SevenSegmetController() {
 
 }
 
-void SevenSegmetController::notify ( Event event ){
+void SevenSegmetController::notify ( Event* event ){
 	printf("notify\n");
-	sscQueue.push_back(&event);
+	sscQueue.push_back(event);
 }
 
 void SevenSegmetController::setDispather(Dispatcher *dispatch){

@@ -12,6 +12,6 @@ Receiver::Receiver(){
 
 }
 
-void Receiver::notify(Event ev){
+void Receiver::notify(Event* ev){
 
 }

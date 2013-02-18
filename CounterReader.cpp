@@ -46,7 +46,7 @@ CounterReader::~CounterReader(){
 	//delete(this);
 }
 
-void CounterReader::trigger(Event event){
+void CounterReader::trigger(Event* event){
 	dispatch->dispatch(event);
 }
 
@@ -55,9 +55,9 @@ void CounterReader::checkCounter(){
 	usleep(50);
 	int read = 0x00;
 	read = in8(LOW);
-	UpdateDisplayEvent ude = UpdateDisplayEvent();
-	ude.setAverage(255-read);
-	ude.setCurrent(255-read);
+	UpdateDisplayEvent* ude = new UpdateDisplayEvent();
+	ude->setAverage(255-read);
+	ude->setCurrent(255-read);
 	trigger(ude);
 	usleep(1000000);
 }

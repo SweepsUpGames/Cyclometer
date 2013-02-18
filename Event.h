@@ -17,7 +17,7 @@ public:
 	//TODO add State to run parameters
 	Event();
 	virtual ~Event();
-	virtual void run(SevenSegmetController* ssc);
+	virtual void run(SevenSegmetController* ssc)=0;
 	ev::EventType getEventType() {
 		return EVENT_TYPE;
 	}

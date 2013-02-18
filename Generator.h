@@ -13,7 +13,7 @@
 
 class Generator{
 public:
-	virtual void trigger(Event event);
+	virtual void trigger(Event* event);
 
 protected:
 	Dispatcher* dispatch;

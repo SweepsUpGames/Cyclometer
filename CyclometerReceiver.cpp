@@ -11,6 +11,6 @@ CyclometerReceiver::CyclometerReceiver(){
 
 }
 
-void CyclometerReceiver::handleEvent ( Event event ){
+void CyclometerReceiver::handleEvent ( Event* event ){
 
 }

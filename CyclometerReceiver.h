@@ -14,10 +14,10 @@
 
 class CyclometerReceiver{
 private:
-	std::list<Event> eventQueue;
+	std::list<Event*> eventQueue;
 public:
 	CyclometerReceiver();
-	virtual void handleEvent ( Event event );
+	virtual void handleEvent ( Event* event );
 };
 
 #endif /* CYCLOMETERRECEIVER_H_ */

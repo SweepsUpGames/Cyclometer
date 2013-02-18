@@ -36,7 +36,7 @@ public:
 	void setDispather(Dispatcher *dispatcher);
 	void setDisplay(int number, bool leadingZeros );
 	void setDisplay(double current, double average);
-	void notify(Event ev);
+	void notify(Event* ev);
 	bool isRunning();
 	void updateDisplay();
 	void startDisplay();

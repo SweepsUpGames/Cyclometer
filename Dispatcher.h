@@ -22,7 +22,7 @@ public:
 	//TODO add State to run parameters
 	Dispatcher();
 	~Dispatcher();
-	void dispatch(Event event);
+	void dispatch(Event* event);
 	void subscribe(ev::EventType evType, Receiver* receiver);
 	void start();
 	void stop();
@@ -30,7 +30,7 @@ public:
 	void runDispatch();
 
 protected:
-	std::list<Event> eventQueue;
+	std::list<Event*> eventQueue;
 
 private:
 	std::map<ev::EventType, Receiver*> eventReceiversHashtable;

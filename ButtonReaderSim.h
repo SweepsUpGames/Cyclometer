@@ -31,7 +31,7 @@ public :
 	void readButton();
 	std::list<uintptr_t>* getCurrentValues();
 	void start();
-	void trigger(Event ev);
+	void trigger(Event* ev);
 
 };
 

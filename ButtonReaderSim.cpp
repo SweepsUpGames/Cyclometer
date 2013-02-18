@@ -29,7 +29,7 @@ ButtonReaderSim::~ButtonReaderSim(){
 
 }
 
-void ButtonReaderSim::trigger(Event ev) {
+void ButtonReaderSim::trigger(Event* ev) {
 	dispatch->dispatch(ev);
 }
 
@@ -46,22 +46,22 @@ void ButtonReaderSim::readButton(){
 	while (std::cin.get(c)) {
 		std::cout.put(c);
 
-		switch (c) {
+		/*switch (c) {
 		case 'm':
-			trigger(ModeEvent());
+			trigger(new ModeEvent());
 			std::cout<<"mode event triggered...";
 			break;
 		case 's':
-			trigger(SetEvent());
+			trigger(new SetEvent());
 			std::cout<<"set event triggered...";
 			break;
 		case 'S':
-			trigger(StartStopEvent());
+			trigger(new StartStopEvent());
 			std::cout<<"start-stop event triggered...";
 			break;
 		case 'x':
 			break;
-		}
+		}*/
 
 		usleep(10);
 	}

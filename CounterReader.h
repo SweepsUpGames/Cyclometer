@@ -23,7 +23,7 @@ public:
 	~CounterReader();
 	void checkCounter();
 	void setDispatcher(Dispatcher* dispatcher);
-	void trigger(Event event);
+	void trigger(Event* event);
 	void startCounter();
 };
 

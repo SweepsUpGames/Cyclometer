@@ -7,7 +7,7 @@
 
 #include "Generator.h"
 
-void Generator::trigger(Event event){
+void Generator::trigger(Event* event){
 
 }
 
