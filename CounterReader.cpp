@@ -47,7 +47,7 @@ CounterReader::~CounterReader(){
 }
 
 void CounterReader::trigger(Event event){
-	dispatch.dispatch(event);
+	dispatch->dispatch(event);
 }
 
 void CounterReader::checkCounter(){
@@ -62,7 +62,7 @@ void CounterReader::checkCounter(){
 	usleep(1000000);
 }
 
-void CounterReader::setDispatcher(Dispatcher dispatcher){
+void CounterReader::setDispatcher(Dispatcher* dispatcher){
 	dispatch = dispatcher;
 }
 

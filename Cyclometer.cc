@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 	//ButtonReader* br = new ButtonReader();
 	//br->readInput();
 	cr->startCounter();
-	cr->setDispatcher(*dispatch);
+	cr->setDispatcher(dispatch);
 
 
 	UpdateDisplayEvent disp = UpdateDisplayEvent();

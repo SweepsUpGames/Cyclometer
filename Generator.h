@@ -16,7 +16,7 @@ public:
 	virtual void trigger(Event event);
 
 protected:
-	Dispatcher dispatch;
+	Dispatcher* dispatch;
 };
 
 #endif /* GENERATOR_H_ */
