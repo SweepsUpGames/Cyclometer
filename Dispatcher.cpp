@@ -14,12 +14,10 @@ Dispatcher::Dispatcher() {
 }
 
 void Dispatcher::dispatch(Event* event) {
-	printf("received event\n");
 	eventQueue.push_back(event);
 }
 
 void Dispatcher::subscribe(ev::EventType evType, Receiver* receiver) {
-	printf("sibs \n");
 	eventReceiversHashtable.insert(std::make_pair(evType, receiver));
 }
 
@@ -39,7 +37,6 @@ void* eventWorker(void* disp) {
 void Dispatcher::runDispatch(){
 	//printf("dispatch is running\n");
 	if (!eventQueue.empty()) {
-		printf("seen event\n");
 		Event* ev = eventQueue.front();
 		std::map<ev::EventType, Receiver*>::iterator it;
 		for (it = eventReceiversHashtable.begin(); it != eventReceiversHashtable.end(); it++) {

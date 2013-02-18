@@ -18,13 +18,13 @@
 #define INIT_CTRL_REG 0b00000010
 
 // Initializes value for the counter control register
-#define INIT_COUNT_CTRL_REG 0b00000010
-#define ENABLE_GATE0 		0b00010000
-#define ENABLE_COUNT 		0b00000100
-#define LATCH_ON     		0b01000000
-#define CLEAR        		0b00000001
-#define LATCH_OFF    		0b00000000
-#define EXTERNALCLOCK 		0b10000000
+#define INIT_COUNT_CTRL_REG 0b10000010
+#define ENABLE_GATE0 		0b10010000
+#define ENABLE_COUNT 		0b10000100
+#define LATCH_ON     		0b11000000
+#define CLEAR        		0b10000001
+#define LATCH_OFF    		0b10000000
+#define EXTERNALCLOCK 		0b01000000
 
 // Address of the digital register
 #define DIGITAL_REG 0x0B

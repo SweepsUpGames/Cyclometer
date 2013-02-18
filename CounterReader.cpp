@@ -53,8 +53,9 @@ void CounterReader::trigger(Event* event){
 void CounterReader::checkCounter(){
 	out8(GATE_CTRL, LATCH_ON);
 	usleep(50);
-	int read = 0x00;
+	int read;
 	read = in8(LOW);
+	printf("read %i\n",read);
 	UpdateDisplayNumberEvent* ude = new UpdateDisplayNumberEvent();
 	ude->setNumber(read);
 	ude->setLeadingZeros(false);

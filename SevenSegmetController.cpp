@@ -40,7 +40,6 @@ SevenSegmetController::SevenSegmetController() {
 }
 
 void SevenSegmetController::notify ( Event* event ){
-	printf("notify\n");
 	sscQueue.push_back(event);
 }
 
