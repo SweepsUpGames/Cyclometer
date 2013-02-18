@@ -9,6 +9,7 @@
 #define COUNTERREADER_H_
 
 #include "Generator.h"
+#include "PulseEvent.h"
 
 #include <pthread.h>
 #include <stdint.h>
@@ -17,6 +18,8 @@ class CounterReader:public Generator{
 private:
 	pthread_mutex_t counterReaderMutex;
 	uintptr_t ctrlHandle;
+	int lastRead;
+	PulseEvent* makePulseEvent(int pulses);
 
 public:
 	CounterReader();

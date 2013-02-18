@@ -12,11 +12,11 @@ namespace ev
 {
     enum EventType
     {
-
         SET,
         DISPLAY,
         MODE,
-        STARTSTOP
+        STARTSTOP,
+        PULSES
     };
 }
 #endif /* EVENTTYPE_H_ */

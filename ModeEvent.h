@@ -13,6 +13,7 @@
 class ModeEvent: public Event{
 public:
 	ModeEvent();
+	void run(SevenSegmetController* ssc);
 };
 
 #endif /* MODEEVENT_H_ */

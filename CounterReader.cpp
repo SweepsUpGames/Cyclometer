@@ -7,7 +7,6 @@
 
 #include "CounterReader.h"
 #include "Constants.h"
-#include "UpdateDisplayNumberEvent.h"
 
 #include <iostream>
 #include <hw/inout.h>
@@ -40,6 +39,7 @@ CounterReader::CounterReader(){
 		usleep(50);
 		out8(GATE_CTRL, ENABLE_COUNT);
 		usleep(50);
+		lastRead = 255;
 }
 
 CounterReader::~CounterReader(){
@@ -53,14 +53,21 @@ void CounterReader::trigger(Event* event){
 void CounterReader::checkCounter(){
 	out8(GATE_CTRL, LATCH_ON);
 	usleep(50);
-	int read;
-	read = in8(LOW);
-	printf("read %i\n",read);
-	UpdateDisplayNumberEvent* ude = new UpdateDisplayNumberEvent();
-	ude->setNumber(read);
-	ude->setLeadingZeros(false);
-	trigger(ude);
+	int read = in8(LOW);
+	int pulses;
+	if (read <= lastRead){
+		pulses = lastRead - read;
+	} else {
+		pulses = (255-read)+lastRead;
+	}
+	trigger(makePulseEvent(pulses));
 	usleep(1000000);
+}
+
+PulseEvent* CounterReader::makePulseEvent(int pulses){
+	PulseEvent* pulseEvent = new PulseEvent();
+	pulseEvent->setPulses(pulses);
+	return pulseEvent;
 }
 
 void CounterReader::setDispatcher(Dispatcher* dispatcher){

@@ -14,6 +14,9 @@
 class Generator{
 public:
 	virtual void trigger(Event* event);
+	void setDispatcher(Dispatcher* dispatcher){
+		dispatch = dispatcher;
+	}
 
 protected:
 	Dispatcher* dispatch;

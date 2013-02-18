@@ -6,8 +6,15 @@
  */
 
 #include "ModeEvent.h"
+#include <iostream>
+
+using namespace std;
 
 ModeEvent::ModeEvent(){
 	EVENT_TYPE = ev::MODE;
+}
+
+void ModeEvent::run(SevenSegmetController* ssc){
+	printf("oops \n");
 }
 

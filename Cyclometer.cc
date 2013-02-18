@@ -1,5 +1,6 @@
 #include "SevenSegmetController.h"
 #include "CounterReader.h"
+#include "ButtonReader.h"
 #include "UpdateDisplayEvent.h"
 #include "Dispatcher.h"
 #include <cstdlib>
@@ -19,8 +20,9 @@ int main(int argc, char *argv[]) {
 	ssc->startDisplay();
 	ssc->setDispather(dispatch);
 
-	//ButtonReader* br = new ButtonReader();
-	//br->readInput();
+	ButtonReader* br = new ButtonReader();
+	br->setDispatcher(dispatch);
+	br->readInput();
 	cr->startCounter();
 	cr->setDispatcher(dispatch);
 

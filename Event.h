@@ -9,7 +9,7 @@
 #define EVENT_H_
 
 #include "EventType.h"
-#include "SevenSegmetController.h"
+//#include "SevenSegmetController.h"
 
 class SevenSegmetController;
 

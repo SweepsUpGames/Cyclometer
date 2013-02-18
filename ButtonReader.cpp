@@ -6,6 +6,7 @@
  */
 
 #include "ButtonReader.h"
+#include "ModeEvent.h"
 #include "Constants.h"
 
 #include <iostream>
@@ -62,48 +63,51 @@ void* getButtonInput(void* obj){
 		if (((buttons & 0b00000001) == 1)){
 			if(!modePushed){
 				modePushed = true;
-				printf("Mode pressed ");
+				printf("Mode pressed \n");
 			} else {
 				modeCount++;
 			}
 		} else if ( ((buttons & 0b00000001) == 0) && modePushed ) {
 			modePushed = false;
-			printf("Mode released: %i ", modeCount);
+			printf("Mode released: %i \n", modeCount);
+			self->trigger(new ModeEvent());
 			modeCount = 0;
 		}
 
 		if (((buttons & 0b00000010) == 2)){
 			if(!startPushed){
 				startPushed = true;
-				printf("Start pressed ");
+				printf("Start pressed \n");
 			} else {
 				startCount++;
 			}
 		} else if (((buttons & 0b00000010) == 0) && startPushed){
 			startPushed = false;
-			printf("Start released: %i ", startCount);
+			printf("Start released: %i \n", startCount);
 			startCount = 0;
 		}
 
 		if (((buttons & 0b00000100) == 4)){
 			if(!setPushed){
 				setPushed = true;
-				printf("Set pressed ");
+				printf("Set pressed \n");
 			} else {
 				setCount++;
 			}
 		} else if (((buttons & 0b00000100) == 0) && setPushed){
 			setPushed = false;
-			printf("Set released: %i ", setCount);
+			printf("Set released: %i \n", setCount);
 			setCount = 0;
 		}
-		printf("\ntick\n");
+		//printf("tick\n");
 		usleep(200000);
 	}
 	return NULL;
 }
 
-
+void ButtonReader::trigger(Event* event){
+	dispatch->dispatch(event);
+}
 
 void ButtonReader::readInput(){
 	pthread_t button_t;

@@ -17,6 +17,7 @@
 #include <stdint.h>
 #include <list>
 
+class Receiver;
 
 class SevenSegmetController: public Receiver {
 private:

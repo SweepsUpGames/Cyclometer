@@ -14,6 +14,7 @@ Dispatcher::Dispatcher() {
 }
 
 void Dispatcher::dispatch(Event* event) {
+	//printf("received: %i\n", event->getEventType());
 	eventQueue.push_back(event);
 }
 
