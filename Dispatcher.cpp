@@ -19,7 +19,7 @@ void Dispatcher::dispatch(Event event) {
 }
 
 void Dispatcher::subscribe(ev::EventType evType, Receiver* receiver) {
-	printf("sibs\n");
+	printf("sibs \n");
 	eventReceiversHashtable.insert(std::make_pair(evType, receiver));
 }
 
@@ -43,7 +43,6 @@ void Dispatcher::runDispatch(){
 		Event ev = eventQueue.front();
 		std::map<ev::EventType, Receiver*>::iterator it;
 		for (it = eventReceiversHashtable.begin(); it != eventReceiversHashtable.end(); it++) {
-
 			if (it->first == ev.getEventType()) {
 				(it->second)->notify(ev);
 			}

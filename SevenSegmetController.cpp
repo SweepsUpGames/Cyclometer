@@ -31,10 +31,10 @@ SevenSegmetController::SevenSegmetController() {
 
 	out8((ctrlHandle + DIGITAL_REG), INIT_CTRL_REG);
 
-	anode0 = new Anode(ANODE0, LITE_1, false);
-	anode1 = new Anode(ANODE1, LITE_1, false);
-	anode2 = new Anode(ANODE2, LITE_1, false);
-	anode3 = new Anode(ANODE3, LITE_1, false);
+	anode0 = new Anode(ANODE0, 1, false);
+	anode1 = new Anode(ANODE1, 1, false);
+	anode2 = new Anode(ANODE2, 1, false);
+	anode3 = new Anode(ANODE3, 1, false);
 	running = true;
 
 }
