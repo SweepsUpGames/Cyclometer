@@ -21,6 +21,8 @@ void UpdateDisplayEvent::setAverage(double newAverage){
 	average = newAverage;
 }
 
-void UpdateDisplayEvent::run(SevenSegmetController* ssc){
-	ssc->setDisplay(current, average);
+void UpdateDisplayEvent::run(Receiver* ssc){
+	if (ssc->getRecType() == rec::ssc){
+		((SevenSegmetController*)ssc)->setDisplay(current, average);
+	}
 }

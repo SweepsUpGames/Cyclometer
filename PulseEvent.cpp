@@ -19,6 +19,6 @@ void PulseEvent::setPulses(int newPulses){
 	pulses = newPulses;
 }
 
-void PulseEvent::run(SevenSegmetController* ssc){
-	printf("error wrong event received\n");
+void PulseEvent::run(Receiver* rec){
+
 }

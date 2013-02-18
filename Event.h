@@ -9,16 +9,15 @@
 #define EVENT_H_
 
 #include "EventType.h"
-//#include "SevenSegmetController.h"
+#include "Receiver.h"
 
-class SevenSegmetController;
-
+class Receiver;
 class Event {
 public:
 	//TODO add State to run parameters
 	Event();
 	virtual ~Event();
-	virtual void run(SevenSegmetController* ssc)=0;
+	virtual void run(Receiver* receiver)=0;
 	ev::EventType getEventType() {
 		return EVENT_TYPE;
 	}

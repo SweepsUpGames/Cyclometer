@@ -13,7 +13,7 @@
 class UpdateDisplayNumberEvent: public Event{
 public:
 	UpdateDisplayNumberEvent();
-	void run(SevenSegmetController* ssc);
+	void run(Receiver* ssc);
 	void setNumber(int newNumber);
 	void setLeadingZeros(bool newLeadingZeros);
 

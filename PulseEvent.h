@@ -18,7 +18,7 @@ public:
 	PulseEvent();
 	~PulseEvent();
 	void setPulses(int newPulses);
-	void run(SevenSegmetController* ssc);
+	void run(Receiver* rec);
 };
 
 

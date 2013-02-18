@@ -16,7 +16,8 @@ namespace ev
         DISPLAY,
         MODE,
         STARTSTOP,
-        PULSES
+        PULSES,
+        ADVANCE_DISPLAY
     };
 }
 #endif /* EVENTTYPE_H_ */

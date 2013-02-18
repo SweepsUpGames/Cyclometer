@@ -6,6 +6,7 @@
  */
 
 #include "UpdateDisplayNumberEvent.h"
+#include "SevenSegmetController.h"
 
 UpdateDisplayNumberEvent::UpdateDisplayNumberEvent(){
 	EVENT_TYPE = ev::DISPLAY;
@@ -15,8 +16,10 @@ void UpdateDisplayNumberEvent::setNumber(int newNumber){
 	number = newNumber;
 }
 
-void UpdateDisplayNumberEvent::run(SevenSegmetController* ssc){
-	ssc->setDisplay(number, leadingZeros);
+void UpdateDisplayNumberEvent::run(Receiver* rec){
+	if(rec->getRecType() == rec::ssc){
+		((SevenSegmetController*)rec)->setDisplay(number, leadingZeros);
+	}
 }
 
 void UpdateDisplayNumberEvent::setLeadingZeros(bool newLeadingZeros){

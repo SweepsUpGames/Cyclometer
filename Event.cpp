@@ -15,6 +15,6 @@ Event::~Event(){
 	//delete(this);
 }
 
-void Event::run(SevenSegmetController* ssc){
+void Event::run(Receiver* rec){
 
 }

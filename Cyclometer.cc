@@ -1,4 +1,5 @@
 #include "SevenSegmetController.h"
+#include "DisplayStateMachine.h"
 #include "CounterReader.h"
 #include "ButtonReader.h"
 #include "UpdateDisplayEvent.h"
@@ -17,8 +18,13 @@ int main(int argc, char *argv[]) {
 	Dispatcher* dispatch = new Dispatcher();
 	dispatch->start();
 
-	ssc->startDisplay();
 	ssc->setDispather(dispatch);
+	ssc->startDisplay();
+
+	DisplayStateMachine* diplay = new DisplayStateMachine(dispatch);
+
+
+
 
 	ButtonReader* br = new ButtonReader();
 	br->setDispatcher(dispatch);
@@ -27,19 +33,13 @@ int main(int argc, char *argv[]) {
 	cr->setDispatcher(dispatch);
 
 
-	UpdateDisplayEvent disp = UpdateDisplayEvent();
-
 	double count = 0.0;
 
 	while(true){
-		//disp.setCurrent(count);
-		//disp.setAverage(3.4);
-		//ssc->notify(disp);
 		count = count + 0.1;
 		if (count > 10 ){
 			count = 0.0;
 		}
-		//printf("value %i\n",cr->checkCounter());
 		usleep(1000000);
 	}
 

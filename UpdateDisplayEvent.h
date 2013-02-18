@@ -9,11 +9,12 @@
 #define UPDATEDISPLAYEVENT_H_
 
 #include "Event.h"
+#include "Receiver.h"
 
 class UpdateDisplayEvent: public Event{
 public:
 	UpdateDisplayEvent();
-	void run(SevenSegmetController* ssc);
+	void run(Receiver* rec);
 	void setCurrent(double newCurrent);
 	void setAverage(double newAverage);
 private:

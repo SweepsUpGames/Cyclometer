@@ -13,6 +13,7 @@
 class SetEvent: public Event{
 public:
 	SetEvent();
+	void run(Receiver* receiver);
 };
 
 #endif /* SETEVENT_H_ */

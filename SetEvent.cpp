@@ -10,3 +10,6 @@ SetEvent::SetEvent(){
 	EVENT_TYPE = ev::SET;
 }
 
+void SetEvent::run(Receiver* rec){
+
+}

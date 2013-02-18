@@ -7,6 +7,7 @@
 
 #include "ButtonReader.h"
 #include "ModeEvent.h"
+#include "SetEvent.h"
 #include "Constants.h"
 
 #include <iostream>
@@ -63,13 +64,13 @@ void* getButtonInput(void* obj){
 		if (((buttons & 0b00000001) == 1)){
 			if(!modePushed){
 				modePushed = true;
-				printf("Mode pressed \n");
+				//printf("Mode pressed \n");
 			} else {
 				modeCount++;
 			}
 		} else if ( ((buttons & 0b00000001) == 0) && modePushed ) {
 			modePushed = false;
-			printf("Mode released: %i \n", modeCount);
+			//printf("Mode released: %i \n", modeCount);
 			self->trigger(new ModeEvent());
 			modeCount = 0;
 		}
@@ -77,26 +78,28 @@ void* getButtonInput(void* obj){
 		if (((buttons & 0b00000010) == 2)){
 			if(!startPushed){
 				startPushed = true;
-				printf("Start pressed \n");
+				//printf("Start pressed \n");
 			} else {
 				startCount++;
 			}
 		} else if (((buttons & 0b00000010) == 0) && startPushed){
 			startPushed = false;
-			printf("Start released: %i \n", startCount);
+			//printf("Start released: %i \n", startCount);
 			startCount = 0;
 		}
 
 		if (((buttons & 0b00000100) == 4)){
 			if(!setPushed){
 				setPushed = true;
-				printf("Set pressed \n");
+				//printf("Set pressed \n");
 			} else {
 				setCount++;
 			}
 		} else if (((buttons & 0b00000100) == 0) && setPushed){
 			setPushed = false;
-			printf("Set released: %i \n", setCount);
+			//printf("Set released: %i \n", setCount);
+			Event* set = new SetEvent();
+			self->trigger(set);
 			setCount = 0;
 		}
 		//printf("tick\n");

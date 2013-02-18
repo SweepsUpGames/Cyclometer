@@ -10,20 +10,31 @@
 
 #include "Dispatcher.h"
 #include "Event.h"
+#include "ReceiverType.h"
 #include <list>
 
 using namespace std;
 
 class Event;
 class Dispatcher;
+
 class Receiver{
 public:
 	Receiver();
 	virtual void notify(Event* ev);
-	void setDispather(Dispatcher *dispatcher);
+
+	void setDispather(Dispatcher *dispatch){
+		dispatcher = dispatch;
+	}
+
+	rec::ReceiverType getRecType() {
+		return REC_TYPE;
+	}
 
 protected:
 	std::list<Event*> eventList;
 	Dispatcher* dispatcher;
+	rec::ReceiverType REC_TYPE;
+
 };
 #endif /* RECEIVER_H_ */
