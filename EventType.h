@@ -29,7 +29,10 @@ namespace ev
         CALC_OFF,
         CALC_OFF2,
         CALC_OFF3,
-        AUTO
+        AUTO,
+        CALC_ON,
+        CALC_ON2,
+        CALC_ON3
     };
 }
 #endif /* EVENTTYPE_H_ */

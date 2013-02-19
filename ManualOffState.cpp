@@ -6,8 +6,10 @@
  */
 
 #include "ManualOffState.h"
+#include "ManualOnState.h"
 #include "CalcOffEvent.h"
 
+class ManualOnState;
 ManualOffState::ManualOffState(){
 
 }
@@ -49,6 +51,6 @@ Event* ManualOffState::giveEvent(Event* event){
 }
 
 State* ManualOffState::getNextState(){
-	return NULL;
+	return new ManualOnState();
 
 }

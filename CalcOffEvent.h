@@ -17,6 +17,7 @@ public:
 	void run(Receiver* rec);
 	void setType(ev::EventType et);
 
+
 };
 
 #endif /* CALCOFFEVENT_H_ */

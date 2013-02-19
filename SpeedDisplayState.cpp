@@ -10,6 +10,7 @@
 #include "UpdateDisplayEvent.h"
 #include "DisanceDisplayState.h"
 #include "UpdateDisplaySMEvent.h"
+#include "AutoEvent.h"
 
 SpeedDisplayState::SpeedDisplayState(int tire){
 	tireSize = tire;
@@ -28,6 +29,9 @@ Event* SpeedDisplayState::giveEvent(Event* event){
 	} else if (event->getEventType() == ev::MODE){
 		UpdateDisplaySMEvent* udsme = new UpdateDisplaySMEvent();
 		return udsme;
+	} else if (event->getEventType() == ev::SET){
+		AutoEvent* autoE = new AutoEvent();
+		return autoE;
 	}
 	return NULL;
 }

@@ -11,6 +11,10 @@ CalcOffEvent::CalcOffEvent(){
 	EVENT_TYPE = ev::CALC_OFF;
 }
 
+CalcOffEvent::~CalcOffEvent(){
+
+}
+
 void CalcOffEvent::run(Receiver* rec){
 
 }

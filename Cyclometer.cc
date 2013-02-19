@@ -7,6 +7,7 @@
 #include "SpeedCalculator.h"
 #include "DistanceCalculator.h"
 #include "TimeCalculator.h"
+#include "CalcStateMachine.h"
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
@@ -29,6 +30,8 @@ int main(int argc, char *argv[]) {
 	DistanceCalculator* distance = new DistanceCalculator(dispatch);
 	TimeCalculator* time = new TimeCalculator(dispatch);
 	ButtonReader* br = new ButtonReader();
+	CalcStateMachine* csm = new CalcStateMachine(dispatch);
+
 	br->setDispatcher(dispatch);
 	br->readInput();
 	cr->startCounter();

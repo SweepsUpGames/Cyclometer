@@ -25,12 +25,15 @@ DistanceCalculator::DistanceCalculator(Dispatcher* dispatch){
 	sub(ev::PULSES2, this);
 	sub(ev::TIRE_SIZE2, this);
 	sub(ev::KILO2, this);
+	sub(ev::CALC_OFF2, this);
+	sub(ev::CALC_ON2, this);
 }
 
 void DistanceCalculator::addPulse(int pulses){
 	if (calc){
 		totalDist = totalDist + calcDist(pulses);
 	}
+	printf("%f\n",totalDist);
 }
 
 void DistanceCalculator::setKilo(bool kilo){
@@ -61,6 +64,12 @@ void DistanceCalculator::notify(Event* event){
 		((SetKilometerEvent*)event)->run(this);
 	} else if (event->getEventType() == ev::TIRE_SIZE2){
 		((TireSizeEvent*)event)->run(this);
+	} else if (event->getEventType() == ev::CALC_OFF2){
+		printf("off\n");
+		calc = false;
+	} else if (event->getEventType() == ev::CALC_ON2){
+		printf("on\n");
+		calc = true;
 	}
 }
 

@@ -11,6 +11,10 @@
 #include "Generator.h"
 #include "Receiver.h"
 #include "State.h"
+#include "CalcOnEvent.h"
+#include "CalcOffEvent.h"
+#include "ManualOffState.h"
+#include "ManualOnState.h"
 
 class Event;
 class StateMachine: public Generator,Receiver{
@@ -51,10 +55,17 @@ public:
 		curState = newState;
 		event = curState->onEnter();
 		trigger(event);
-		event = curState->onEnter2();
-		trigger(event);
-		event = curState->onEnter2();
-		trigger(event);
+		/*if (event->getEventType() == ev::CALC_ON){
+			event = ((CalcOnEvent*)curState)->ManualOnState::onEnter2();
+			trigger(event);
+			event = ((CalcOnEvent*)curState)->ManualOnState::onEnter3();
+			trigger(event);
+		} else if (event->getEventType() == ev::CALC_OFF){
+			event = ((CalcOffEvent*)curState)->ManualOffState::onEnter2();
+			trigger(event);
+			event = ((CalcOffEvent*)curState)->ManualOffState::onEnter3();
+			trigger(event);
+		}*/
 	}
 
 };

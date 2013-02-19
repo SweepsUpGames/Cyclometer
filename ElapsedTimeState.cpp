@@ -11,6 +11,7 @@
 #include "UpdateDisplayNumberEvent.h"
 #include "UpdateElapcedTimeEvent.h"
 #include "TimeEvent.h"
+#include "AutoEvent.h"
 
 ElapsedTimeState::ElapsedTimeState(int tire){
 	tireSize = tire;
@@ -43,6 +44,9 @@ Event* ElapsedTimeState::giveEvent(Event* event){
 		UpdateElapcedTimeEvent* update = new UpdateElapcedTimeEvent();
 		update->setMinutes(((TimeEvent*)event)->getMinutes());
 		update->setSeconds(((TimeEvent*)event)->getSeconds());
+		return update;
+	} else if (event->getEventType() == ev::SET){
+		AutoEvent* update = new AutoEvent();
 		return update;
 	}
 	return NULL;
