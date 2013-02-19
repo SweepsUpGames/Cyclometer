@@ -7,6 +7,12 @@
 
 #include "CalcStateMachine.h"
 
-CalcStateMachine::CalcStateMachine(){
+CalcStateMachine::CalcStateMachine(Dispatcher* dispatcher){
+	StateMachine::setDispatcher(dispatcher);
+}
 
+void CalcStateMachine::notify(Event* ev){
+	if(ev->getEventType() == ev::AUTO){
+
+	}
 }

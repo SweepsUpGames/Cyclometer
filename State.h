@@ -8,6 +8,8 @@
 #ifndef STATE_H_
 #define STATE_H_
 
+#include <stddef.h>
+
 //#include "StateMachine.h"
 //#include "Event.h"
 
@@ -16,6 +18,13 @@ class StateMachine;
 class State{
 public:
 	virtual Event* onEnter()=0;
+	Event* onEnter2(){
+		return NULL;
+	}
+	Event* onEnter3(){
+		return NULL;
+	}
+
 	virtual Event* onExit()=0;
 	virtual Event* onExit2()=0;
 	virtual Event* onExit3()=0;

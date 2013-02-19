@@ -12,7 +12,9 @@
 
 class CalcStateMachine:public StateMachine{
 public:
-	CalcStateMachine();
+	CalcStateMachine(Dispatcher* dispatcher);
+	void notify(Event* ev);
+
 };
 
 #endif /* CALCSTATEMACHINE_H_ */

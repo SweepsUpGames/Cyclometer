@@ -51,6 +51,10 @@ public:
 		curState = newState;
 		event = curState->onEnter();
 		trigger(event);
+		event = curState->onEnter2();
+		trigger(event);
+		event = curState->onEnter2();
+		trigger(event);
 	}
 
 };

@@ -14,6 +14,8 @@ class ManualOffState: public State{
 public:
 	ManualOffState();
 	Event* onEnter();
+	Event* onEnter2();
+	Event* onEnter3();
 	Event* onExit();
 	Event* onExit2();
 	Event* onExit3();
