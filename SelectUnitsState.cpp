@@ -6,8 +6,10 @@
  */
 
 #include "SelectUnitsState.h"
+#include "SelectCircumferanceSizeState.h"
 #include "UpdateDisplayNumberEvent.h"
 #include "UpdateDisplaySMEvent.h"
+#include "SetKilometerEvent.h"
 
 SelectUnitsState::SelectUnitsState(){
 	km = true;
@@ -18,6 +20,12 @@ Event* SelectUnitsState::onEnter(){
 	update->setNumber(1);
 	update->setLeadingZeros(false);
 	return update;
+}
+
+Event* SelectUnitsState::onExit(){
+	SetKilometerEvent* event = new SetKilometerEvent();
+	event->setKilometers(km);
+	return event;
 }
 
 Event* SelectUnitsState::giveEvent(Event* event){
@@ -39,4 +47,8 @@ Event* SelectUnitsState::giveEvent(Event* event){
 		return udsme;
 	}
 	return NULL;
+}
+
+State* SelectUnitsState::getNextState(){
+	return new SelectCircumferanceSizeState();
 }

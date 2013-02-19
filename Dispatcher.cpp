@@ -14,12 +14,21 @@ Dispatcher::Dispatcher() {
 }
 
 void Dispatcher::dispatch(Event* event) {
-	printf("received: %i\n", event->getEventType());
-	eventQueue.push_back(event);
+	if(event != NULL){
+		printf("received: %i\n", event->getEventType());
+		eventQueue.push_back(event);
+	}
 }
 
 void Dispatcher::subscribe(ev::EventType evType, Receiver* receiver) {
-	printf("subs\n");
+	printf("subs %i %i \n", evType, receiver->getRecType());
+	std::map<ev::EventType, Receiver*>::iterator it;
+	for (it = eventReceiversHashtable.begin(); it != eventReceiversHashtable.end(); it++){
+		//printf("something %i %i\n", it->first, evType);
+		if (it->first == evType){
+			printf("hit\n");
+		}
+	}
 	eventReceiversHashtable.insert(std::make_pair(evType, receiver));
 }
 

@@ -1,25 +1,22 @@
 /*
- * SelectUnitsState.h
+ * SpeedDisplayState.h
  *
  *  Created on: Feb 18, 2013
  *      Author: wkb6223
  */
 
-#ifndef SELECTUNITSSTATE_H_
-#define SELECTUNITSSTATE_H_
+#ifndef SPEEDDISPLAYSTATE_H_
+#define SPEEDDISPLAYSTATE_H_
 
 #include "State.h"
 
-class SelectUnitsState: public State{
-private:
-	bool km;
-
+class SpeedDisplayState: public State{
 public:
-	SelectUnitsState();
+	SpeedDisplayState();
 	Event* onEnter();
 	Event* onExit();
 	Event* giveEvent(Event* event);
 	State* getNextState();
 };
 
-#endif /* SELECTUNITSSTATE_H_ */
+#endif /* SPEEDDISPLAYSTATE_H_ */

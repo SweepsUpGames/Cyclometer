@@ -6,6 +6,8 @@
  */
 
 #include "PulseEvent.h"
+#include "SpeedCalculator.h"
+#include "DistanceCalculator.h"
 
 PulseEvent::PulseEvent(){
 	EVENT_TYPE = ev::PULSES;
@@ -20,5 +22,9 @@ void PulseEvent::setPulses(int newPulses){
 }
 
 void PulseEvent::run(Receiver* rec){
-
+	if (rec->getRecType() == rec::sc){
+		((SpeedCalculator*)rec)->addSpeed(pulses);
+	} else if (rec->getRecType() == rec::dc){
+		((DistanceCalculator*)rec)->addPulse(pulses);
+	}
 }

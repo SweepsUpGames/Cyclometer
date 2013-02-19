@@ -54,12 +54,13 @@ void CounterReader::checkCounter(){
 	out8(GATE_CTRL, LATCH_ON);
 	usleep(50);
 	int read = in8(LOW);
-	int pulses;
+	int pulses = 0;
 	if (read <= lastRead){
 		pulses = lastRead - read;
 	} else {
 		pulses = (255-read)+lastRead;
 	}
+	lastRead = read;
 	trigger(makePulseEvent(pulses));
 	usleep(1000000);
 }

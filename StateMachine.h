@@ -17,6 +17,7 @@ class StateMachine: public Generator,Receiver{
 protected:
 	State* curState;
 	Dispatcher* dispatcher;
+	int first;
 
 public:
 	StateMachine();
@@ -38,8 +39,15 @@ public:
 	}
 
 	void advanceState(State* newState){
+		Event* event;
+		if (first != 0){
+			event = curState->onExit();
+			trigger(event);
+		} else {
+			first = 1;
+		}
 		curState = newState;
-		Event* event = curState->onEnter();
+		event = curState->onEnter();
 		trigger(event);
 	}
 

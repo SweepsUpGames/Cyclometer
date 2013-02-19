@@ -24,7 +24,7 @@
 #define LATCH_ON     		0b11000000
 #define CLEAR        		0b10000001
 #define LATCH_OFF    		0b10000000
-#define EXTERNALCLOCK 		0b01000000
+#define EXTERNALCLOCK 		0b10000000
 
 // Address of the digital register
 #define DIGITAL_REG 0x0B

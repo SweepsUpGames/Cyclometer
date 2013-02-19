@@ -14,7 +14,10 @@ class SelectCircumferanceSizeState: public State{
 public:
 	SelectCircumferanceSizeState();
 	Event* onEnter();
+	Event* onExit();
 	Event* giveEvent(Event* event);
+	State* getNextState();
+
 private:
 	int tireSize;
 };

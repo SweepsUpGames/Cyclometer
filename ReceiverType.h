@@ -12,7 +12,9 @@ namespace rec
 {
     enum ReceiverType
     {
-        ssc
+        ssc,
+        sc,
+        dc
     };
 }
 

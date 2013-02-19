@@ -9,8 +9,11 @@
 
 DisplayStateMachine::DisplayStateMachine(Dispatcher* dispatcher){
 	StateMachine::setDispatcher(dispatcher);
+	first = 0;
 	sub(ev::MODE, this);
+	sub(ev::SET, this);
 	sub(ev::ADVANCE_DISPLAY, this);
+	sub(ev::SPEED, this);
 	sus = new SelectUnitsState();
 	scss = new SelectCircumferanceSizeState();
 	advanceState(sus);
@@ -18,9 +21,8 @@ DisplayStateMachine::DisplayStateMachine(Dispatcher* dispatcher){
 
 void DisplayStateMachine::notify(Event* ev){
 	if(ev->getEventType() == ev::ADVANCE_DISPLAY){
-		if (curState == sus){
-			advanceState(scss);
-		}
+		State* next = curState->getNextState();
+		StateMachine::advanceState(next);
 	} else {
 		StateMachine::trigger(curState->giveEvent(ev));
 	}

@@ -4,6 +4,8 @@
 #include "ButtonReader.h"
 #include "UpdateDisplayEvent.h"
 #include "Dispatcher.h"
+#include "SpeedCalculator.h"
+#include "DistanceCalculator.h"
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
@@ -22,25 +24,19 @@ int main(int argc, char *argv[]) {
 	ssc->startDisplay();
 
 	DisplayStateMachine* diplay = new DisplayStateMachine(dispatch);
-
-
-
-
+	SpeedCalculator* speed = new SpeedCalculator(dispatch);
+	DistanceCalculator* distance = new DistanceCalculator(dispatch);
 	ButtonReader* br = new ButtonReader();
 	br->setDispatcher(dispatch);
 	br->readInput();
 	cr->startCounter();
 	cr->setDispatcher(dispatch);
+	speed->genSpeed();
+	distance->genDist();
 
-
-	double count = 0.0;
 
 	while(true){
-		count = count + 0.1;
-		if (count > 10 ){
-			count = 0.0;
-		}
-		usleep(1000000);
+		usleep(10000000);
 	}
 
 	//TODO add connection from generator to gate0 pin to enable counter
