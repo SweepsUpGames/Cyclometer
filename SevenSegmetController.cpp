@@ -48,6 +48,13 @@ void SevenSegmetController::setDispather(Dispatcher *dispatch){
 	dispatcher->subscribe(ev::DISPLAY, this);
 }
 
+void SevenSegmetController::setDisplay(int minutes, int seconds){
+	anode3->setVal(getFirstDiget(minutes), false );
+	anode2->setVal(getSecondDiget(minutes), true );
+	anode1->setVal(getFirstDiget(seconds), false );
+	anode0->setVal(getSecondDiget(seconds), false );
+}
+
 void SevenSegmetController::setDisplay(double current, double average){
 	bool decimalFirst = false;
 	bool decimalSecond = false;
@@ -136,11 +143,20 @@ int SevenSegmetController::getFirstDiget(double number){
 	int ret = 0;
 	if(number < 10)	{
 		ret = (int)number;
-	}
-	else {
+	} else if (number > 99){
+		ret = 9;
+	} else {
 		ret = (int)number/10;
 	}
 	return ret;
+}
+
+int SevenSegmetController::getFirstDiget(int number){
+	if (number < 10){
+		return 0;
+	} else {
+		return number/10;
+	}
 }
 
 int SevenSegmetController::getSecondDiget(double number){
@@ -150,11 +166,16 @@ int SevenSegmetController::getSecondDiget(double number){
 			number = number-1.0;
 		}
 		ret = (int)(number*10);
-	}
-	else {
+	} else if (number > 99){
+		ret = 9;
+	} else {
 		ret = (int)number%10;
 	}
 	return ret;
+}
+
+int SevenSegmetController::getSecondDiget(int number){
+	return number%10;
 }
 
 void SevenSegmetController::updateDisplay(){

@@ -30,11 +30,14 @@ private:
 	bool running;
 	std::list<Event*> sscQueue;
 	int getFirstDiget(double number);
+	int getFirstDiget(int number);
 	int getSecondDiget(double number);
+	int getSecondDiget(int number);
 
 public:
 	SevenSegmetController();
 	void setDispather(Dispatcher *dispatcher);
+	void setDisplay(int minutes, int seconds);
 	void setDisplay(int number, bool leadingZeros );
 	void setDisplay(double number);
 	void setDisplay(double current, double average);

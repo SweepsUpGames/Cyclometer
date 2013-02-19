@@ -24,7 +24,8 @@ namespace ev
         KILO,
         KILO2,
         SPEED,
-        DIST
+        DIST,
+        TIME
     };
 }
 #endif /* EVENTTYPE_H_ */

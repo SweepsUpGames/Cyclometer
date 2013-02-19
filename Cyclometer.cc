@@ -6,6 +6,7 @@
 #include "Dispatcher.h"
 #include "SpeedCalculator.h"
 #include "DistanceCalculator.h"
+#include "TimeCalculator.h"
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
@@ -26,6 +27,7 @@ int main(int argc, char *argv[]) {
 	DisplayStateMachine* diplay = new DisplayStateMachine(dispatch);
 	SpeedCalculator* speed = new SpeedCalculator(dispatch);
 	DistanceCalculator* distance = new DistanceCalculator(dispatch);
+	TimeCalculator* time = new TimeCalculator(dispatch);
 	ButtonReader* br = new ButtonReader();
 	br->setDispatcher(dispatch);
 	br->readInput();
@@ -33,6 +35,7 @@ int main(int argc, char *argv[]) {
 	cr->setDispatcher(dispatch);
 	speed->genSpeed();
 	distance->genDist();
+	time->startClock();
 
 
 	while(true){

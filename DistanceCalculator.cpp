@@ -13,7 +13,6 @@
 #include "TireSizeEvent.h"
 #include "UpdateDistanceEvent.h"
 
-
 #include <pthread.h>
 #include <unistd.h>
 
@@ -46,7 +45,7 @@ void DistanceCalculator::setTireSize(int tire){
 double DistanceCalculator::calcDist(int pulses){
 	if(setUp){
 		double dist = ((double)(pulses * tireSize))/100000;
-		if (!kilo){
+		if (!km){
 			dist = dist / 1.60934;
 		}
 		return dist;

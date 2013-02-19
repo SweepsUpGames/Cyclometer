@@ -10,6 +10,7 @@
 #include "SelectCircumferanceSizeState.h"
 #include "UpdateDisplaySMEvent.h"
 #include "UpdateDistanceEvent.h"
+#include "ElapsedTimeState.h"
 
 DisanceDisplayState::DisanceDisplayState(int tireS){
 	tire = false;
@@ -20,7 +21,7 @@ State* DisanceDisplayState::getNextState(){
 	if (tire){
 		return new SelectCircumferanceSizeState(tireSize);
 	} else {
-		return this;
+		return new ElapsedTimeState(tireSize);
 	}
 }
 

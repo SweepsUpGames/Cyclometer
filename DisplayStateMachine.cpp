@@ -15,6 +15,7 @@ DisplayStateMachine::DisplayStateMachine(Dispatcher* dispatcher){
 	sub(ev::ADVANCE_DISPLAY, this);
 	sub(ev::DIST, this);
 	sub(ev::SPEED, this);
+	sub(ev::TIME, this);
 	sus = new SelectUnitsState();
 	scss = new SelectCircumferanceSizeState();
 	advanceState(sus);

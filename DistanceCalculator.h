@@ -37,7 +37,6 @@ public:
 		dispatcher = dispatch;
 	}
 	void addPulse(int pulses);
-
 	double calcDist(int pules);
 };
 
