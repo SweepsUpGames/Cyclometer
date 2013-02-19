@@ -57,3 +57,7 @@ Event* DisanceDisplayState::onExit(){
 Event* DisanceDisplayState::onExit2(){
 	return NULL;
 }
+
+Event* DisanceDisplayState::onExit3(){
+	return NULL;
+}

@@ -1,26 +1,25 @@
 /*
- * ElapsedTimeState.h
+ * ManualOffState.h
  *
  *  Created on: Feb 19, 2013
  *      Author: wkb6223
  */
 
-#ifndef ELAPSEDTIMESTATE_H_
-#define ELAPSEDTIMESTATE_H_
+#ifndef MANUALOFFSTATE_H_
+#define MANUALOFFSTATE_H_
 
 #include "State.h"
 
-class ElapsedTimeState: public State{
+class ManualOffState: public State{
 public:
-	ElapsedTimeState(int tireSize);
+	ManualOffState();
 	Event* onEnter();
 	Event* onExit();
 	Event* onExit2();
 	Event* onExit3();
 	Event* giveEvent(Event* event);
 	State* getNextState();
-private:
-	int tireSize;
+
 };
 
-#endif /* ELAPSEDTIMESTATE_H_ */
+#endif /* MANUALOFFSTATE_H_ */

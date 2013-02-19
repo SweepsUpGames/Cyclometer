@@ -15,13 +15,11 @@ Dispatcher::Dispatcher() {
 
 void Dispatcher::dispatch(Event* event) {
 	if(event != NULL){
-		printf("received: %i\n", event->getEventType());
 		eventQueue.push_back(event);
 	}
 }
 
 void Dispatcher::subscribe(ev::EventType evType, Receiver* receiver) {
-	printf("subs %i %i \n", evType, receiver->getRecType());
 	eventReceiversHashtable.insert(std::make_pair(evType, receiver));
 }
 

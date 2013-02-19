@@ -46,3 +46,7 @@ Event* SpeedDisplayState::onExit(){
 Event* SpeedDisplayState::onExit2(){
 	return NULL;
 }
+
+Event* SpeedDisplayState::onExit3(){
+	return NULL;
+}

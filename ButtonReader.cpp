@@ -102,7 +102,6 @@ void* getButtonInput(void* obj){
 			self->trigger(set);
 			setCount = 0;
 		}
-		//printf("tick\n");
 		usleep(200000);
 	}
 	return NULL;

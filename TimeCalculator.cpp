@@ -33,7 +33,6 @@ Event* TimeCalculator::getTime(){
 	int seconds = getCurrentTime();
 	int minutes = seconds/60;
 	seconds = seconds%60;
-	printf("Minutes: %i Seconds: %i\n", minutes, seconds);
 	TimeEvent* timeEvent = new TimeEvent();
 	timeEvent->setMinutes(minutes);
 	timeEvent->setSeconds(seconds);

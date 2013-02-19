@@ -59,6 +59,10 @@ Event* SelectCircumferanceSizeState::onExit2(){
 	return tire;
 }
 
+Event* SelectCircumferanceSizeState::onExit3(){
+	return NULL;
+}
+
 State* SelectCircumferanceSizeState::getNextState(){
 	if (outside){
 		return new DisanceDisplayState(tireSize);

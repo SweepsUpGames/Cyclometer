@@ -16,6 +16,7 @@ public:
 	Event* onEnter();
 	Event* onExit();
 	Event* onExit2();
+	Event* onExit3();
 	Event* giveEvent(Event* event);
 	State* getNextState();
 private:

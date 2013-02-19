@@ -35,9 +35,12 @@ Event* SelectUnitsState::onExit2(){
 	return event;
 }
 
+Event* SelectUnitsState::onExit3(){
+	return NULL;
+}
+
 Event* SelectUnitsState::giveEvent(Event* event){
 	if (event->getEventType() == ev::MODE){
-		printf("event given\n");
 		UpdateDisplayNumberEvent* update = new UpdateDisplayNumberEvent();
 		if (km){
 			km = false;

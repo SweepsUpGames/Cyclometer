@@ -31,6 +31,10 @@ Event* ElapsedTimeState::onExit2(){
 	return NULL;
 }
 
+Event* ElapsedTimeState::onExit3(){
+	return NULL;
+}
+
 Event* ElapsedTimeState::giveEvent(Event* event){
 	if (event->getEventType() == ev::MODE){
 		UpdateDisplaySMEvent* udsme = new UpdateDisplaySMEvent();
