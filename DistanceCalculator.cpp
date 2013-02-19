@@ -6,23 +6,26 @@
  */
 
 #include "DistanceCalculator.h"
+
 #include "PulseEvent.h"
 #include "SetKilometerEvent.h"
 #include "UpdateDisplayDistanceEvent.h"
 #include "TireSizeEvent.h"
+#include "UpdateDistanceEvent.h"
+
 
 #include <pthread.h>
 #include <unistd.h>
 
 DistanceCalculator::DistanceCalculator(Dispatcher* dispatch){
-	DistanceCalculator::setDispatcher(dispatch);
 	REC_TYPE = rec::dc;
 	setUp = false;
 	calc = true;
 	totalDist = 0.0;
-	//sub(ev::PULSES, this);
-	//sub(ev::TIRE_SIZE, this);
-	//sub(ev::KILO, this);
+	DistanceCalculator::setDispatcher(dispatch);
+	sub(ev::PULSES2, this);
+	sub(ev::TIRE_SIZE2, this);
+	sub(ev::KILO2, this);
 }
 
 void DistanceCalculator::addPulse(int pulses){
@@ -41,24 +44,33 @@ void DistanceCalculator::setTireSize(int tire){
 }
 
 double DistanceCalculator::calcDist(int pulses){
-	double dist = (pulses * tireSize)/100000;
-	return dist;
+	if(setUp){
+		double dist = ((double)(pulses * tireSize))/100000;
+		if (!kilo){
+			dist = dist / 1.60934;
+		}
+		return dist;
+	} else {
+		return 0.0;
+	}
 }
 
 void DistanceCalculator::notify(Event* event){
-	if (event->getEventType() == ev::PULSES){
+	if (event->getEventType() == ev::PULSES2){
 		((PulseEvent*)event)->run(this);
-	} else if (event->getEventType() == ev::KILO){
+	} else if (event->getEventType() == ev::KILO2){
 		((SetKilometerEvent*)event)->run(this);
-	} else if (event->getEventType() == ev::TIRE_SIZE){
+	} else if (event->getEventType() == ev::TIRE_SIZE2){
 		((TireSizeEvent*)event)->run(this);
 	}
 }
 
 Event* DistanceCalculator::makeEvent(){
-	UpdateDisplayDistanceEvent* update = new UpdateDisplayDistanceEvent();
-	update->setDist(totalDist);
-	//return update;
+	if(setUp){
+		UpdateDistanceEvent* update = new UpdateDistanceEvent();
+		update->setDistance(totalDist);
+		return update;
+	}
 	return NULL;
 }
 

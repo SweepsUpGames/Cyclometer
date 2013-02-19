@@ -18,6 +18,7 @@ public:
 	SelectUnitsState();
 	Event* onEnter();
 	Event* onExit();
+	Event* onExit2();
 	Event* giveEvent(Event* event);
 	State* getNextState();
 };

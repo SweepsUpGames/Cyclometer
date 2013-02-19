@@ -22,29 +22,27 @@ private:
 	bool calc;
 
 public:
-	bool isSetUp();
-	SpeedCalculator(Dispatcher* dispatch);
 	void setKilo(bool isKilo);
-	void setTireSize(int tireSize);
-	void initSpeeds();
-	void genSpeed();
+	void notify(Event* ev);
+	SpeedCalculator(Dispatcher* dispatch);
 	Event* getSpeed();
-	double getAverageSpeed();
-	double clacSpeed(double count);
-	void setDispatcher(Dispatcher* dispatch){
-		dispatcher = dispatch;
-	}
-
+	void genSpeed();
+	void setTireSize(int tireSize);
 	void sub(ev::EventType evType, SpeedCalculator* receiver){
 		dispatcher->subscribe(evType, ((Receiver*)receiver));
 	}
-
-	void notify(Event* ev);
-
 	void trigger(Event* event){
 		dispatcher->dispatch(event);
 	}
+	void setDispatcher(Dispatcher* dispatch){
+		dispatcher = dispatch;
+	}
 	void addSpeed(int speed);
+
+	bool isSetUp();
+	void initSpeeds();
+	double getAverageSpeed();
+	double clacSpeed(double count);
 	double getCurrentSpeed();
 };
 

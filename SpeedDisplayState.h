@@ -12,11 +12,14 @@
 
 class SpeedDisplayState: public State{
 public:
-	SpeedDisplayState();
+	SpeedDisplayState(int tire);
 	Event* onEnter();
 	Event* onExit();
+	Event* onExit2();
 	Event* giveEvent(Event* event);
 	State* getNextState();
+private:
+	int tireSize;
 };
 
 #endif /* SPEEDDISPLAYSTATE_H_ */

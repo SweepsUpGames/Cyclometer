@@ -13,13 +13,16 @@
 class SelectCircumferanceSizeState: public State{
 public:
 	SelectCircumferanceSizeState();
+	SelectCircumferanceSizeState(int tire);
 	Event* onEnter();
 	Event* onExit();
+	Event* onExit2();
 	Event* giveEvent(Event* event);
 	State* getNextState();
 
 private:
 	int tireSize;
+	bool outside;
 };
 
 #endif /* SELECTCIRCUMFERANCESIZESTATE_H_ */

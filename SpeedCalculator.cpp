@@ -11,15 +11,15 @@
 #include "SetKilometerEvent.h"
 #include "TireSizeEvent.h"
 #include "UpdateSpeedEvent.h"
+
 #include <pthread.h>
 #include <unistd.h>
 
-
 SpeedCalculator::SpeedCalculator(Dispatcher* dispatch){
 	REC_TYPE = rec::sc;
-	input = 0;
 	setUp = false;
 	calc = true;
+	input = 0;
 	SpeedCalculator::setDispatcher(dispatch);
 	sub(ev::PULSES, this);
 	sub(ev::TIRE_SIZE, this);
@@ -71,13 +71,11 @@ double SpeedCalculator::clacSpeed(double count){
 }
 
 void SpeedCalculator::setTireSize(int tire){
-	printf("tireSet\n");
 	tireSize = tire;
 	setUp = true;
 }
 
 void SpeedCalculator::setKilo(bool isKilo){
-	printf("kiloSet\n");
 	kilo = isKilo;
 }
 

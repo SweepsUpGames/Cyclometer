@@ -13,6 +13,10 @@ SetKilometerEvent::SetKilometerEvent(){
 	EVENT_TYPE = ev::KILO;
 }
 
+void SetKilometerEvent::setType(ev::EventType ev){
+	EVENT_TYPE = ev;
+}
+
 void SetKilometerEvent::run(Receiver* rec){
 	if (rec->getRecType() == rec::sc){
 		((SpeedCalculator*)rec)->setKilo(km);

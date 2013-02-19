@@ -17,6 +17,10 @@ PulseEvent::~PulseEvent(){
 
 }
 
+void PulseEvent::setType(ev::EventType et){
+	EVENT_TYPE = et;
+}
+
 void PulseEvent::setPulses(int newPulses){
 	pulses = newPulses;
 }

@@ -21,20 +21,24 @@ private:
 	double totalDist;
 
 public:
-	void genDist();
+	void setKilo(bool km);
+	void notify(Event* ev);
+	DistanceCalculator(Dispatcher* dispatch);
 	Event* makeEvent();
+	void genDist();
+	void setTireSize(int tire);
 	void sub(ev::EventType evType, DistanceCalculator* receiver){
 		dispatcher->subscribe(evType, ((Receiver*)receiver));
 	}
-	DistanceCalculator(Dispatcher* dispatch);
 	void trigger(Event* event){
 		dispatcher->dispatch(event);
 	}
-	double calcDist(int pules);
-	void notify(Event* ev);
+	void setDispatcher(Dispatcher* dispatch){
+		dispatcher = dispatch;
+	}
 	void addPulse(int pulses);
-	void setKilo(bool km);
-	void setTireSize(int tire);
+
+	double calcDist(int pules);
 };
 
 #endif /* DISTANCECALCULATOR_H_ */

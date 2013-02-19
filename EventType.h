@@ -17,10 +17,14 @@ namespace ev
         MODE,
         STARTSTOP,
         PULSES,
+        PULSES2,
         ADVANCE_DISPLAY,
         TIRE_SIZE,
+        TIRE_SIZE2,
         KILO,
-        SPEED
+        KILO2,
+        SPEED,
+        DIST
     };
 }
 #endif /* EVENTTYPE_H_ */

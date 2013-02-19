@@ -17,6 +17,7 @@ private:
 public:
 	PulseEvent();
 	~PulseEvent();
+	void setType(ev::EventType);
 	void setPulses(int newPulses);
 	void run(Receiver* rec);
 };

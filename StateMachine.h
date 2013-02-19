@@ -43,6 +43,8 @@ public:
 		if (first != 0){
 			event = curState->onExit();
 			trigger(event);
+			event = curState->onExit2();
+			trigger(event);
 		} else {
 			first = 1;
 		}

@@ -97,39 +97,38 @@ void SevenSegmetController::setDisplay(int number, bool leadingZeros ){
 
 void SevenSegmetController::setDisplay(double number){
 	if (number > 999.9){
-		anode0->setVal(9);
-		anode1->setVal(9);
-		anode2->setVal(9, true);
 		anode3->setVal(9);
+		anode2->setVal(9);
+		anode1->setVal(9, true);
+		anode0->setVal(9);
 	} else if (number > 99.9){
 		int intNum = number;
-		anode0->setVal(intNum/100);
-		anode1->setVal((intNum/10)%10);
-		anode2->setVal(intNum%10, true);
-		anode3->setVal((number - intNum)*10);
+		anode3->setVal(intNum/100);
+		anode2->setVal((intNum/10)%10);
+		anode1->setVal(intNum%10, true);
+		anode0->setVal((number - intNum)*10);
 	} else if (number > 9.9){
 		int intNum = number;
-		anode0->setVal(0);
-		anode1->setVal(intNum/10);
-		anode2->setVal(intNum%10, true);
-		anode3->setVal((number - intNum)*10);
+		anode3->setVal(0);
+		anode2->setVal(intNum/10);
+		anode1->setVal(intNum%10, true);
+		anode0->setVal((number - intNum)*10);
 	} else if (number > 0.9){
 		int intNum = number;
-		anode0->setVal(0);
-		anode1->setVal(0);
-		anode2->setVal(intNum, true);
-		anode3->setVal((number - intNum)*10);
-	} else if (number > 0.0){
-		int intNum = number;
-		anode0->setVal(0);
-		anode1->setVal(0);
-		anode2->setVal(0, true);
-		anode3->setVal(intNum*10);
-	} else {
-		anode0->setVal(0);
-		anode1->setVal(0);
-		anode2->setVal(0, true);
 		anode3->setVal(0);
+		anode2->setVal(0);
+		anode1->setVal(intNum, true);
+		anode0->setVal((number - intNum)*10);
+	} else if (number > 0.0){
+		anode3->setVal(0);
+		anode2->setVal(0);
+		anode1->setVal(0, true);
+		anode0->setVal(number*10);
+	} else {
+		anode3->setVal(0);
+		anode2->setVal(0);
+		anode1->setVal(0, true);
+		anode0->setVal(0);
 	}
 }
 

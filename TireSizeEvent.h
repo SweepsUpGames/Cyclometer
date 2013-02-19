@@ -15,6 +15,7 @@ private:
 	int tireSize;
 public:
 	TireSizeEvent();
+	void setType(ev::EventType ev);
 	void setTireSize(int tire);
 	void run(Receiver* receiver);
 };

@@ -28,6 +28,13 @@ Event* SelectUnitsState::onExit(){
 	return event;
 }
 
+Event* SelectUnitsState::onExit2(){
+	SetKilometerEvent* event = new SetKilometerEvent();
+	event->setKilometers(km);
+	event->setType(ev::KILO2);
+	return event;
+}
+
 Event* SelectUnitsState::giveEvent(Event* event){
 	if (event->getEventType() == ev::MODE){
 		printf("event given\n");

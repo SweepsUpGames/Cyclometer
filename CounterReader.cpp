@@ -62,6 +62,9 @@ void CounterReader::checkCounter(){
 	}
 	lastRead = read;
 	trigger(makePulseEvent(pulses));
+	PulseEvent* second = makePulseEvent(pulses);
+	second->setType(ev::PULSES2);
+	trigger(second);
 	usleep(1000000);
 }
 

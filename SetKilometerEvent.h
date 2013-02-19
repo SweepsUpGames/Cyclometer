@@ -13,6 +13,7 @@
 class SetKilometerEvent: public Event{
 public:
 	SetKilometerEvent();
+	void setType(ev::EventType ev);
 	void run(Receiver* receiver);
 	void setKilometers(bool isKilometers);
 
